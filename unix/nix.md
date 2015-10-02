@@ -78,7 +78,7 @@ Getting around the directories of our computer is a snap!
 
 ```
 $ pwd
-/Users/Bookis/work/ada
+/Users/Bookis/work/code-builders
 ```
 `pwd` returns the **p**resent **w**orking **d**irectory. Use this command to find in which directory you are currently "in".
 
@@ -90,9 +90,9 @@ $ cd <some path>
 ```
 $ pwd
 /Users/Bookis/work
-$ cd ada
+$ cd code-builders
 $ pwd
-/Users/Bookis/work/ada
+/Users/Bookis/work/code-builders
 ```
 
 #### Special Paths
@@ -108,7 +108,7 @@ A single "." represents the current directory, so cd . goes to where you already
 ```
 $ cd ..
 ```
-".." represents the parent directory, ".." from /Users/Bookis/work/ada is /Users/Bookis/work
+".." represents the parent directory, ".." from /Users/Bookis/work/code-builders is /Users/Bookis/work
 ```
 $ cd ../../
 ```
@@ -152,7 +152,7 @@ printf "tacos\noranges\ncupcakes\n" > foods
 cat foods
 ```
 
-We use the pipe character '|' to send the output of one command on to the next one. 
+We use the pipe character '|' to send the output of one command on to the next one.
 
 ```
 printf "bananas\napples\npancakes\n" | grep "an"
