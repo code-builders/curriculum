@@ -2,7 +2,7 @@
 
 ## Iterators
 
-_Iteration_ is the process of progromatically interacting with a collection of values, one at a time. We call it "looping" sometimes, and we do a lot of it. Here is a simple loop; fire up irb and give it a try:
+_Iteration_ is the process of programmatically interacting with a collection of values, one at a time. We call it "looping" sometimes, and we do a lot of it. Here is a simple loop; fire up irb and give it a try:
 
 ```ruby
 10.times { |n| puts n } # So... what happened

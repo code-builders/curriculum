@@ -163,6 +163,11 @@ Look at the Ruby docs for [Array](http://www.ruby-doc.org/core-2.2.3/Array.html)
 
 Note: `Hash` and `Symbol` are required learning, but we will do individual lessons on those topics to introduce the specific ideas which are required.
 
+
+## .rb
+
+A quick note about ruby files. We've been coding in `irb` so far, but `irb` is mostly used for a quick playground to try things out, typically code will be written in ruby files. A ruby file has the extension `.rb`, which is the only requirement for the file. When you write code in a Ruby file, you have to "run" that file to execute the code, but unlike `irb` you won't see anything happen unless you use `puts` or `print`. Let's try to put some code in a file (and take a quick look at the `.inspect` method)
+
 Resources
 ---------
 - http://www.ruby-doc.org/core-2.2.3/String.html
