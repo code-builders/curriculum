@@ -4,15 +4,15 @@ A database is a system of storing and organizing information on a computer. In t
 
 | ID | Name    |
 |:---|:--------|
-| 1  | Kari    |
-| 2  | Jeremy  |
-| 3  | Crystal |
-| 4  | Cynthia |
+| 1  | Big Bird    |
+| 2  | Elmo  |
+| 3  | Cookie Monster |
+| 4  | The Count |
 
-We're going to quickly create a CSV to read later, don't worry about this code for now, just copy and paste it. Notice that it created a file named `ada_people.csv` on your computer.
+We're going to quickly create a CSV to read later, don't worry about this code for now, just copy and paste it. Notice that it created a file named `people.csv` on your computer.
 ```ruby
-people = [[1,"Kari"], [2, "Jeremy"], [3, "Crystal"], [4, "Cynthia"]]
-CSV.open("ada_people.csv", "w") do |file|
+people = [[1,"Big Bird"], [2, "Elmo"], [3, "Cookie Monster"], [4, "The Count"]]
+CSV.open("people.csv", "w") do |file|
   people.each do |person|
     file << person
   end
@@ -24,11 +24,11 @@ Ruby includes a CSV library used to read and write CSV files. This class is very
 ```ruby
 require 'csv'
 # Reads the contents of the file into an array of arrays.
-CSV.read("ada_people.csv")
-# => [["1", "Kari"],["2", "Jeremy"],["3", "Crystal"],["4", "Cynthia"]]
+CSV.read("people.csv")
+# => [["1", "Big Bird"],["2", "Elmo"],["3", "Cookie Monster"],["4", "The Count"]]
 
 # Returns a CSV Object, to be read or manipulated.
-csv = CSV.open("ada_people.csv")
+csv = CSV.open("people.csv")
 # <#CSV io_type:File io_path:"file.csv" encoding:UTF-8 ...>
 ```
 
@@ -57,7 +57,7 @@ If you pass a block to `open`, Ruby will open the file, execute the code within 
 
 ```ruby
 require 'csv'
-CSV.open("moar_ada_peeps.csv", 'w') do |csv|
+CSV.open("moar_peeps.csv", 'w') do |csv|
   csv << "1,Elise\n2,Karen"
 end
 ```
@@ -74,35 +74,33 @@ end
 The `.read` method requires one arguement, the filename, and allows for additional options. `.read` first opens the CSV file, then reads the contents of it into a new `Array`. Each row of CSV data is translated into an array as well.
 
 ```
-# ada_peeps.csv
-1,Kari
-2,Jeremy
-3,Cynthia
-4,Crystal
+# peeps.csv
+1,Big Bird
+2,Elmo
+3,The Count
+4,Cookie Monster
 ```
 
 ```ruby
 require 'csv'
-require 'awesome_print'
-array_of_ada_peeps = CSV.read("ada_peeps.csv")
-ap array_of_ada_peeps
+array_of_peeps = CSV.read("peeps.csv")
+ap array_of_peeps
 # [
 #     [0] [
 #         [0] 1,
-#         [1] "Kari"
+#         [1] "Big Bird"
 #     ],
 #     [1] [
 #         [0] 2,
-#         [1] "Jeremy"
+#         [1] "Elmo"
 #     ],
 #     [2] [
 #         [0] 3,
-#         [1] "Cynthia"
+#         [1] "The Count"
 #     ],
 #     [3] [
 #         [0] 4,
-#         [1] "Crystal"
+#         [1] "Cookie Monster"
 #     ]
 # ]
 ```
-
