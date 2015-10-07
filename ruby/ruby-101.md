@@ -1,6 +1,6 @@
 # Welcome To Ruby!
 
-We're going to start working with Ruby! Ruby is a programming language and will be the foundation of most everything we learn for the next 3 months.
+We're going to start working with Ruby! Ruby is a programming language and will be the foundation of most everything we learn for the next 6 months.
 
 Like learning any new language, getting good at Ruby will just take practice. You'll find over time that there's nothing "magic" about programming - you're issuing commands that a computer understands and can execute.
 
@@ -26,17 +26,12 @@ In the Ruby community, we try to focus on the people, not the machines.
 
 ## Ruby Community
 
-+ *.rb <- New!
++ [*.rb](https://twitter.com/splat_rb)
 + [Railsbridge](http://www.railsbridge.org/) & [Rails Girls](http://railsgirls.com/)
 + [Seattle.rb](http://www.seattlerb.org/)
 + Twitter
   + [\#fridayhug](https://twitter.com/hashtag/fridayhug)
   + [\#rubyfriends](https://twitter.com/hashtag/rubyfriends)
-
-
-Our First Textbooks
-===================
-We'll be using Learn to Program to get ourselves acquainted with Ruby.
 
 
 What is it about Ruby?
@@ -51,11 +46,10 @@ A couple of ideas that you may notice being different from other programming lan
 
 - Flexible syntax, there are many ways to write the exact same code.
 
-
 IRB
 ===
 
-Ruby can be directly executed from your terminal using IRB (**I**nteractive **R**u **b**y). IRB is be a helpful tool for learning, quick computations, documentation, and debugging problems.
+Ruby can be directly executed from your terminal using IRB (Interactive Ruby). IRB is be a helpful tool for learning, quick computations, documentation, and debugging problems.
 
 
 Playing with IRB
@@ -68,16 +62,20 @@ From the command line, enter `irb`. Once you're in IRB:
 What happened???
 ================
 
-Did we just write the world’s shortest “Hello World” program? Not exactly. The second line is just IRB’s way of telling us the result of the last expression it evaluated. If we want to print out “Hello World” we need a bit more.
+Did we just write the world’s shortest `“Hello World”` program? Not exactly. The second line is just IRB’s way of telling us the result of the last expression it evaluated. If we want to print out “Hello World” we need a bit more.
+
+```
+puts "hello world"
+```
 
 Free calculators for everyone!
 ==============================
 
 * Try doing some arithmetic in irb
-* 2 + 3
-* 2 * 3
-* 2 ** 3
-* 4/3 (Note what Ruby does with the decimal places.)
+* `2 + 3`
+* `2 * 3`
+* `2 ** 3`
+* `4/3` (Note what Ruby does with the decimal places.)
 
 Math ain't hard!
 ================
@@ -92,7 +90,7 @@ Math.sqrt(9)
 
 Basic Variables
 ===============
-A **variable** is just like "X" from high school algebra. It's a placeholder that stands in for a value. It's like a little post office box can be a number, a string, a piece of code.. it doesn't care how big a thing you put inside it, but you can only put one thing in it at a time.
+A **variable** is just like "X" from high school algebra. It's a placeholder that stands in for a value.
 
 ```
 a = 3 ** 2
@@ -104,7 +102,6 @@ Methods
 We have used a lot of methods up to this point, and we didn't even know it!  
 
 
-In the ```Math.sqrt(9)``` example, ```sqrt``` is the name of a method. In this case, we **call** the ```sqrt``` method in the ```Math``` **module** with the __parameter__ value 9.  
-```gets.chomp``` is another example where we were using a method. In this case, we **call** the ```chomps``` method with no __parameters__ on the user input that is provided by ```gets```.
+In the `Math.sqrt(9)` example, `sqrt is the name of a method. In this case, we **call** the `sqrt method in the `Math` **module** with the __parameter__ value `9`.  
 
 As we continue on, we will use a lot of methods. Pretty soon, we'll be defining and using our own methods!
