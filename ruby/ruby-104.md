@@ -5,6 +5,8 @@ Equality comparisons can be used on all objects, including `Strings`, `Integers`
 - `==` (equal to?)
 - `!=` (not equal to?)
 
+Note `=` and `==` are very different things!
+
 Numeric comparisons are used primarily on `Integers` and `Floats`:
 - `>`  (greater than?)
 - `<`  (less than?)
@@ -73,29 +75,8 @@ end
 
 
 ### Negating Comparisons
-Ruby has an `unless` keyword that works just like `if`, but in the reverse way.
 
-```ruby
-puts "What is your favorite animal?"
-fav_animal = gets.chomp
-
-if fav_animal.downcase == "camel"
-  puts "I also love camels!"
-else
-  puts "That's a great animal, but I love camels the most."
-end
-
-# The following code works identically to the above
-unless fav_animal.downcase == "camel"
-  puts "That's a great animal, but I love camels the most."
-else
-  puts "I also love camels!"
-end
-```
-
-The `if` block executes if the _conditional_ evaluates as `true`. The `unless` block executes if the _conditional_ evaluates as `false`.
-
-Another way to "negate" a conditional is to use the `!` (not) operator. This should be placed just before a boolean value, or a comparison. When combined with a comparison the comparison should be enclosed in parentheses:
+A way to "negate" a conditional is to use the `!` (not) operator. `!` can be used in several ways. The most obvious is
 
 ```ruby
 puts "What day of the week is it?"
@@ -105,7 +86,7 @@ puts "What did you have for lunch today?"
 lunch = gets.chomp
 
 if day_of_week.downcase == "tuesday"
-  if !(lunch == "tacos")
+  if lunch != "tacos"
     puts "Taco Tuesdays are my favorite, though!"
   end
 end

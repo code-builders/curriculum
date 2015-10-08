@@ -5,10 +5,8 @@
 _Iteration_ is the process of programmatically interacting with a collection of values, one at a time. We call it "looping" sometimes, and we do a lot of it. Here is a simple loop; fire up irb and give it a try:
 
 ```ruby
-10.times { |n| puts n } # So... what happened
+[1,2,3].each { |n| puts n } # So... what happened
 ```
-#### Question: What is `times`?
-
 We can iterate all kinds of things, but probably the most common and most fun is iterating an _Array_. They're especially suited for iteration because they, by default, have a objective order to their elements. Here's an example of iterating an _Array_ using the `each` _method_:
 
 ```ruby
@@ -21,10 +19,6 @@ Cool, right? `each` iterated the _Array_, starting with the first value, multipl
 ### Let's talk about Blocks...
 
 Blocks (also referred to as _closures_, especially in other languages like JavaScript) are not a unique features of Ruby, but they're one that many people talk about (and more people use without realizing it!) What is a block?
-
->A section of code which is grouped together.
-
-Zzzzz....
 
 A block is a piece of code that is not executed immediately, but is stored in a variable or passed to a method, and is potentially executed at a later moment in time.
 
