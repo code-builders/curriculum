@@ -78,7 +78,7 @@ You'll need more rows, but you get the idea.
 ```ruby
 y = 0
 [9,8,7,6,5,4,3,2,1].each do |x|
-  if x % 2 == 0
+  if x.even?
     y = y + x
     puts y
   else

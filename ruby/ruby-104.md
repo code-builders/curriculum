@@ -76,7 +76,7 @@ end
 
 ### Negating Comparisons
 
-A way to "negate" a conditional is to use the `!` (not) operator. `!` can be used in several ways. The most obvious is
+A way to "negate" a conditional is to use the `!` (not) operator. `!` can be used in several ways. The most obvious is `!=`.
 
 ```ruby
 puts "What day of the week is it?"
