@@ -6,11 +6,10 @@ Let's make a planetary system!
 
 # Wave 1
 ## Primary Requirements
-- Get creative! Give each instance of `Planet` diameters, mass, moons.. whatever! __Allow these attributes to be set using a hash in initialize.__
+- Get creative! Give each instance of `Planet` diameters, mass, moons.. whatever!
 - You should be able to create many different planets with different properties, like Mercury, Venus, Earth, Mars, Jupiter, etc.
 
 ## Optional Enhancements
-- Give each planet a rate of solar rotation
 - Give each planet a `@distance_from_the_sun` attribute
 
 - Write a program that asks for user input to query the planets:
@@ -22,6 +21,7 @@ Let's make a planetary system!
 
 # Wave 2
 ## Primary Requirements
+- __Allow all attributes to be set using a hash in initialize.__
 - Create a `SolarSystem` class that has an attribute `planets` that has zero to many `Planet` instances. There are a few different options for how to associate the planets with your solar system:
     - Initialize the list of planets in the constructor of the solar system
     - Create a method that adds a single planet to a solar system
