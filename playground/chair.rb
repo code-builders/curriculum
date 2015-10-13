@@ -1,28 +1,17 @@
 class Chair
-  attr_accessor :name
-  # attr_reader :name, :weight
-  # attr_writer :name, :weight
+  attr_accessor :name, :weight, :color, :height, :rolls, :created_at
 
-  def initialize(n,w)
-    # define the name of the chair
-    @name = n
-    @weight = w
+  def initialize(attrs={})
+    # attrs is a hash
+    # {height: 30, name: "Vilgot", rolls: true}
+    @name       = attrs[:name]
+    @weight     = attrs[:weight]
+    @color      = attrs[:color]
+    @height     = attrs[:height]
+    @rolls      = attrs[:rolls]
+    @created_at = attrs[:created_at]
+    # @name   = n
+    # @weight = w
   end
-
-  def yell_name
-    @name.upcase + "!!!!!!"
-  end
-
-  # def name=(new_name)
-  #   @name = new_name
-  # end
-
-  # def weight
-  #   @weight
-  # end
-
-  # def weight=(new_weight)
-  #   @weight = new_weight
-  # end
 
 end

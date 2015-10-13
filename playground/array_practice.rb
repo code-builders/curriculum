@@ -1,9 +1,8 @@
 # ar = []
 # ar.push("Hello")
 # ar << "Goodbye"
-
-foods = []
 puts "What are the 3 foods that you would want on a dessert island?"
+foods = []
 
 while foods.size < 3
 
