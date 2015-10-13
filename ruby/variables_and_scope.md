@@ -11,7 +11,7 @@ There are 5 types of variables in ruby but we will look at the 2 most common
 #### Local Variable
 
 ```ruby
-my_name = "Kari"
+my_name = "Isaac"
 ```
 
 - Local variables start with a lowercase letter or an underscore.
