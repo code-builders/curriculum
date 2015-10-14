@@ -20,7 +20,7 @@ Create a `Bubble` class which is like a social media post (think tweet or facebo
 2. Use a `Hash` to initialize the attributes with values
 3. Add methods *or* `attr_accessor` to get and set all of the attributes
 
-Create a seperate file called `app.rb`. Use `require 'bubble'` at the top of the file to include the code from your bubble class (this is no different than having the code written in this spot). When the script is run from the terminal with `ruby app.rb`, it will:
+Create a seperate file called `app.rb`. Use `require_relative 'bubble'` at the top of the file to include the code from your bubble class (this is no different than having the code written in this spot). When the script is run from the terminal with `ruby app.rb`, it will:
 
 1. Ask for a username
 1. Ask for the body of a `Bubble`
