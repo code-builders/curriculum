@@ -19,7 +19,7 @@ Lunch
 "name=Ada*Lovelace&father=Lord*Byron&mother=Anne*Isabella*Milbanke"
 ```
 
-1. Rules from Bronze
+1. Rules from Breakfast
 2. Convert any `*` characters into a space character
 
 Partial Example: `{name: "Ada Lovelace"}`
@@ -33,7 +33,7 @@ Create a nested hash by separating the following into hashes
 "person[first_name]=Ada&person[last_name]=Lovelace&century=19th&topic=analytical*engine"
 ```
 
-1. Rules from Bronze and Silver
+1. Rules from Breakfast and Lunch
 2. `[*]` indicates a hash as a value, the word preceding the `[*]` is the key to the value and the word in the `[*]` is a key within the nested hash.
 
 Partial Example: `{person: {first_name: "Ada", last_name: "Lovelace"}}`
@@ -45,7 +45,7 @@ Dessert
 "person[first_name]=Ada&person[last_name]=Lovelace&skills[]=programming&skills[]=math"
 ```
 
-1. Rules from Bronze, Silver, and Gold
+1. Rules from Breakfast, Lunch, and Dinner
 2. An empty `[]` indicates an Array as a value. the word preceding the `[]` is the key to the Array the word after the `=` will be added to the array.
 
 Partial Example: `{skills: ["programming", "math"]}`
