@@ -32,6 +32,8 @@ csv = CSV.open("people.csv")
 # <#CSV io_type:File io_path:"file.csv" encoding:UTF-8 ...>
 ```
 
+### .open
+
 The `open` method requires at least one argument and up to three arguments as well as an optional block.
 
 ```ruby
@@ -57,8 +59,8 @@ If you pass a block to `open`, Ruby will open the file, execute the code within 
 
 ```ruby
 require 'csv'
-CSV.open("moar_peeps.csv", 'w') do |csv|
-  csv << "1,Elise\n2,Karen"
+CSV.open("people.csv", 'w') do |csv|
+  csv << "1,Oscar\n2,Elmo"
 end
 ```
 
@@ -71,10 +73,12 @@ CSV.open("markets.csv", 'r').each do |line|
 end
 ```
 
+### .read
+
 The `.read` method requires one arguement, the filename, and allows for additional options. `.read` first opens the CSV file, then reads the contents of it into a new `Array`. Each row of CSV data is translated into an array as well.
 
 ```
-# peeps.csv
+# people.csv
 1,Big Bird
 2,Elmo
 3,The Count
@@ -83,24 +87,6 @@ The `.read` method requires one arguement, the filename, and allows for addition
 
 ```ruby
 require 'csv'
-array_of_peeps = CSV.read("peeps.csv")
-ap array_of_peeps
-# [
-#     [0] [
-#         [0] 1,
-#         [1] "Big Bird"
-#     ],
-#     [1] [
-#         [0] 2,
-#         [1] "Elmo"
-#     ],
-#     [2] [
-#         [0] 3,
-#         [1] "The Count"
-#     ],
-#     [3] [
-#         [0] 4,
-#         [1] "Cookie Monster"
-#     ]
-# ]
+array_of_people = CSV.read("people.csv")
+puts array_of_people.inspect
 ```

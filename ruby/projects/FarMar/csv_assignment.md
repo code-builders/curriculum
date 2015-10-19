@@ -126,6 +126,7 @@ You will be evaluated on:
 
 ### Extended Requirments
 
+- Use memoization to run the specs in under 1 second (2 if you have an old computer)
 - Write additional (creative) methods to add neat functionality
 - Add a `FarMar::Base` class which all other classes inherit from which holds the shared methods.
 - Write additional specs
