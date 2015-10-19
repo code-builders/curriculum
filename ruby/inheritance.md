@@ -78,6 +78,6 @@ hawk.talk
 
 In this case, you want to utilize the behavior that the _base class_ (```Bird```) provides but augment it with functionality specific to the _subclass_ (```Hawk```).
 
-[bird](../topic_resources/animal_farm/bird.rb)
-[penguin](../topic_resources/animal_farm/penguin.rb)
-[dog](../topic_resources/animal_farm/dog.rb)
+[bird](resources/animal_farm/bird.rb)
+[penguin](resources/animal_farm/penguin.rb)
+[dog](resources/animal_farm/dog.rb)
