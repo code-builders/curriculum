@@ -1,113 +1,120 @@
 # FarMar Finder
 
-In this assignment we will be creating an application to look up Farmers Markets and their related vendors, products, and sales. We will use CSV files as our database.
+In this assignment we will be creating a tool for use in `irb` to look up Farmers Markets and their related vendors, products, and sales. We will use CSV files as our database.
 
 ### Getting Started
 
-1. Pair up!
-2. The individual closest to the center of the room will fork the repo: [https://github.com/Ada-Developers-Academy/far_mar_finder](https://github.com/Ada-Developers-Academy/far_mar_finder)
-3. Add the second individual as a collaborator
-4. Both individuals will clone the repo `git clone [repo url]`
-5. Both individuals cd into the dir created `cd far_mar_finder`
-6. Both individuals install rspec (in Terminal.app)
+For this project we will introduce testing in ruby. We will be using a library called `rspec`, this is the most widely used testing tool for Ruby applications. Start by installing the gem:
 
-------
-
-    gem install rspec
-    
-------
+```
+gem install rspec
+```
 
 ### Data
 
 There are several CSV data files:
 
-    /support/markets.csv
-    /support/products.csv
-    /support/vendors.csv
-    /support/sales.csv
-    
+```sh
+/support/markets.csv
+/support/products.csv
+/support/vendors.csv
+/support/sales.csv
+```    
+
 ### Expectations
 
 Build classes to query the CSV data including objects and methods listed below. Before going too deeply into the methods listed, start by building a system to read the csv files and turn each row of data into an instance of the corresponding ruby class.
 
-To manage our data classes we will use a file named `/lib/far_mar_finder.rb`
+To namespace our data classes we will use a file named `/lib/far_mar.rb`
 
-    require 'csv'
-    require 'time'
-    require_relative 'market'
-    # ... require all needed classes
-    
-    class FarMarFinder
-      # Your Code Here
-    end
-    
-You will start by creating methods for FarMarFinder to return the class of each of the supporting classes
+```rb
+# lib/far_mar.rb
+require 'csv'
 
-    finder = FarMarFinder.new
-    finder.markets
-     #=> Market
-    finder.vendors
-     #=> Vendor
-    finder.products
-     #=> Product
-    finder.sales
-     #=> Sale
-     
-We will build class methods on the returned class Object
+module FarMar
+end
 
-    finder = FarMarFinder.new
-    finder.markets.all
-     # => [...] Returns all instances of the Market class
-     
-See below for full description of methods to create.
+require_relative 'far_mar/market'
+require_relative 'far_mar/vendor'
+# ... require all needed classes
+```
+
+```rb
+# lib/far_mar/market.rb
+class FarMar::Market
+
+end
+```
+
+With this `FarMar` module name-spacing and requiring all of the files, running the following to start `irb` should load everything in order to use the tool:
+
+```sh
+irb -r ./lib/far_mar.rb
+```
+
+The completed product will be used in `irb` as a developer tool to access the data from farmers market CSV's.
 
 ### Assignment
 
-**For each of the data classes build the following methods:**
+**Shared Methods:**
+
+For each of the data classes build the following methods:
 
 - `self.all` - returns all rows of the CSV file as objects
 - `self.find(id)` - returns the row where the ID field matches the argument
-- `self.find_by_x(match)` - where X is an attribute, returns a single instance whose X attribute case-insensitive attribute matches the match parameter. For instance, Vendor.find_by_name("windler inc") could find a Vendor with the name attribute "windler inc" or "Windler Inc".
-- `self.find_all_by_x(match)` - works just like `find_by_x` but returns a collection containing all possible matches. For example `Market.find_by_state("WA")` could return all of the Market object with `"WA"` in their state field.
 
-**Additional Market Methods**
-    
+**Unique Market Methods**
+
 - `vendors` - returns a collection of `Vendor` instances that are associated with the market by the market_id field.
+- `find_by_state(state_name)` - Returns the first `Market` object with a state name which matches the input
+- `find_by_state(state_name)` - Returns a list of all `Market` objects with a state name that matches the input
 
-**Additional Vendor Methods**
+**Unique Vendor Methods**
 
 - `market` - returns the `Market` instance that is associated with this vendor using the `Vendor` `market_id` field
 - `products` - returns a collection of `Product` instances that are associated with market by the `Product` `vendor_id` field.
 - `sales` - returns a collection of `Sale` instances that are associated with market by the `vendor_id` field.
 - `revenue` - returns the the sum of all of the vendor's sales (in cents)
+- `self.by_market(market_id)` - returns a list of all `Vendor` objects with a market id that matches the input
+- `company_size` - returns the size of the company using the following rules:
+  - 1-3 `"Family Business"`
+  - 4-15 `"Small Business"`
+  - 16-100 `"Medium Business"`
+  - 101+ `"Big Business"`
 
-**Additional Product Methods**
+**Unique Product Methods**
 
 - `vendor` - returns the `Vendor` instance that is associated with this vendor using the `Product` `vendor_id` field
 - `sales` - returns a collection of `Sale` instances that are associated with market using the `Sale` `product_id` field.
 - `number_of_sales` - returns the number of times this product has been sold.
+- `self.by_vendor(vendor_id)`- returns a list of all `Product` objects with a vendor id that matches the input
 
-**Additional Sale Methods**
+
+**Unique Sale Methods**
 
 - `vendor` - returns the `Vendor` instance that is associated with this sale using the `Sale` `vendor_id` field
 - `product` - returns the `Product` instance that is associated with this sale using the `Sale` `product_id` field
 - `self.between(beginning_time, end_time)` - returns a collection of Sale objects where the purchase time is between the two times given as arguments
+- `self.by_product(product_id)` - returns an `Array` of `Sale` objects with a `product_id` matching the argument.
+- `self.by_vendor(vendor_id)` - returns an `Array` of `Sale` objects with a `vendor_id` matching the argument.
 
 ### Testing
 
-To run our test suite use:
+To run our the whole test suite:
 
-    rspec -c
-    
-Our test suite will run tests to ensure that *some* of our required methods are implemented correctly.
+```
+rspec
+```
 
-Note: It will be best to create the basic file for the four supporting classes before running our tests
+To run a tests on a single class:
 
-    class Market
-    
-    end
-    
-and requiring them in `/lib/far_mar_finder.rb`.
+```sh
+rspec spec/lib/far_mar/market_spec.rb #replace file name for a different class
+```
+
+I recommend starting testing with just the `market_spec.rb`, and moving on to the next class when the errors start referring to another class.
+
+Note: Our test suite will run tests to ensure that *most* of our required methods are implemented correctly.
 
 ## Evaluation
 
@@ -116,15 +123,18 @@ You will be evaluated on:
 - Running `rspec` from Terminal with no failures
 - Demonstrating, in IRB, a few of the methods listed above (asked at random).
 - Code quality (is your code organized and logical)
-- Extra credit for additional methods to add neat functionality
-- Extra credit for writing additional specs
 
----------
+### Extended Requirments
+
+- Write additional (creative) methods to add neat functionality
+- Add a `FarMar::Base` class which all other classes inherit from which holds the shared methods.
+- Write additional specs
+
 
 ---------
 
 ## More Info
-    
+
 ### Classes
 
 Our supporting classes will also live in the `/lib` dir.
