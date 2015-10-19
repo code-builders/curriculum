@@ -25,15 +25,16 @@ class Acronym
     "zoonomical", "zoonomist", "zoonomy", "zoonosis", "zoonosologist", "zoonosology", "zoonotic", "zoons", "zoonule"]
   end
 
+  def self.grouped_words
+    words.group_by do |w|
+      w.chars.first
+    end
+  end
+
   def self.acronym(word)
-    output = []
     chars = word.chars# split word into each character
-    chars.each do |character|# for each character
-      matches = []
-      self.words.each do |w|
-        matches << w if w[0].downcase == character.downcase
-      end # find all words in self.words which starts with the character
-      output << matches.sample # push a random matched word into an array
+    output = chars.map do |character|# for each character
+      matches = grouped_words[character].sample
     end
 
     output.join(" ") # join each of the words in the new array with spaces
