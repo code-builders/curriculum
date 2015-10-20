@@ -34,7 +34,10 @@ class Acronym
   def self.acronym(word)
     chars = word.chars# split word into each character
     output = chars.map do |character|# for each character
-      matches = grouped_words[character].sample
+      matches = self.words.find_all do |w|
+        w.chars.first == character
+      end
+      matches.sample # push a random matched word into an array
     end
 
     output.join(" ") # join each of the words in the new array with spaces
