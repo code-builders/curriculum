@@ -27,16 +27,16 @@ Use a ```before``` block to run a specific block of code before every test is ru
 
 ```ruby
 before :each do
-    @chair = Chair.new
+  @chair = Chair.new
 end
 ```
 
 Use the describe block to specify actions of a method.
 ```ruby
 describe "#new" do
-    it "returns a Chair object" do
-        expect(@chair).to be_an_instance_of Chair
-    end
+  it "returns a Chair instance" do
+    expect(@chair).to be_an_instance_of Chair
+  end
 end
 ```
 This test simply confirms that we have indeed made a Chair object.
