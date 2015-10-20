@@ -16,7 +16,7 @@ Load the class into `irb` then practice the following:
 
 1. Using the array `[1, "fritz@example.com", "Fritz"]` initialize a new instance of `User`
 1. Make up your own array to initialize an instance of a `User`
-1. Still in `irb` copyt the array below and use the `.map` method to create an array of `User` objects (assign to a variable)
+1. Still in `irb` copy the array below and use the `.map` method to create an array of `User` objects (assign to a variable)
 ```rb
 [[1, "fritz@example.com", "Fritz"],
 [7, "clara@example.com", "Clara"],
@@ -35,5 +35,3 @@ Using the variable assigned to the Array of `User` objects do the following usin
 1. Find all users with `Mouse` in their username (`.find_all` or `.select`)
 1. Create an Array of all email addresses (`.map` or `.collect`)
 1. Use `group_by` to group the users where id is less than 5.
-
-Use the `.map` method on the array below to create a new array of `User` objects.
