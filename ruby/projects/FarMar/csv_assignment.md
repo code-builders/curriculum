@@ -66,14 +66,14 @@ For each of the data classes build the following methods:
 **Unique Market Methods**
 
 - `vendors` - returns a collection of `Vendor` instances that are associated with the market by the market_id field.
-- `find_by_state(state_name)` - Returns the first `Market` object with a state name which matches the input
-- `find_by_state(state_name)` - Returns a list of all `Market` objects with a state name that matches the input
+- `self.find_by_state(state_name)` - Returns the first `Market` object with a state name which matches the input
+- `self.find_all_by_state(state_name)` - Returns a list of all `Market` objects with a state name that matches the input
 
 **Unique Vendor Methods**
 
 - `market` - returns the `Market` instance that is associated with this vendor using the `Vendor` `market_id` field
-- `products` - returns a collection of `Product` instances that are associated with market by the `Product` `vendor_id` field.
-- `sales` - returns a collection of `Sale` instances that are associated with market by the `vendor_id` field.
+- `products` - returns a collection of `Product` instances that are associated with the vendor by the `Product` `vendor_id` field.
+- `sales` - returns a collection of `Sale` instances that are associated with the vendor by the `Sale` `vendor_id` field.
 - `revenue` - returns the the sum of all of the vendor's sales (in cents)
 - `self.by_market(market_id)` - returns a list of all `Vendor` objects with a market id that matches the input
 - `company_size` - returns the size of the company using the following rules:
@@ -126,7 +126,6 @@ You will be evaluated on:
 
 ### Extended Requirments
 
-- Use memoization to run the specs in under 1 second (2 if you have an old computer)
 - Write additional (creative) methods to add neat functionality
 - Add a `FarMar::Base` class which all other classes inherit from which holds the shared methods.
 - Write additional specs
