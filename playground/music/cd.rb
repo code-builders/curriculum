@@ -1,0 +1,3 @@
+class Cd < Music
+
+end
