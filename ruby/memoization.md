@@ -5,7 +5,11 @@ Memoization is an optimization technique used to store the result of expensive (
 ```ruby
 class EnourmousSuperComputer
 
-  def answer_to_the_ultimate_question_of_life_the_universe_and_everything
+  def initialize(question)
+    @question = question
+  end
+
+  def answer
     answer = sleep ((10120123 * 123123 / 1 ** 3) / 29322415100).to_f / 10.to_f
     (answer * 10.5).to_i
   end
@@ -16,8 +20,16 @@ end
 ```ruby
 class EnourmousSuperComputer
 
-  def answer_to_the_ultimate_question_of_life_the_universe_and_everything
-    @answer ||= calculate_answer
+  def initialize(question)
+    @question = question
+  end
+
+  def answer
+    if @answer
+      @answer
+    else
+      @answer = calculate_answer
+    end
   end
 
   private
@@ -33,11 +45,15 @@ end
 ```ruby
 class EnourmousSuperComputer
 
-  def answer_to_the_ultimate_question_of_life_the_universe_and_everything
+  def initialize(question)
+    @question = question
+  end
+
+  def answer
     @answer ||= calculate_answer
   end
 
-  def answer_to_the_ultimate_question_of_life_the_universe_and_everything
+  def answer
     if @answer
       @answer
     else
