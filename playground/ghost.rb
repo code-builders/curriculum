@@ -1,4 +1,19 @@
 class Ghost
+  CEMETARY = "Lake View"
+
+  def self.cemetary
+    # self == Ghost
+    CEMETARY
+  end
+
+  def self.file
+    __FILE__
+  end
+
+  def cemetary
+    Ghost::CEMETARY
+  end
+
   def initialize(name)
     @name = name
     @opacity = 0.5
