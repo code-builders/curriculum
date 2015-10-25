@@ -22,8 +22,6 @@ The `<h1>` describes that the text "My Blog" is a heading for this page.
 Display
 -------
 
-<!-- TODO: Put image of each type of display -->
-
 In HTML there are four display types `block`, `inline`, a cross of the two `inline-block`, and `none`.
 
 Inline elements are elements that only take up the width of the actual content. Like this **bold** word, the html element `<b>` is used, but the elements width is automatically calculated.
@@ -32,6 +30,11 @@ Block elements are elements that take up 100% of the horizontal space they occup
 
 Inline-Block elements are a combination of the two. Inline block elements are displayed inline but can have their widths changed.
 
+----------------
+
+![Display types](resources/display-examples.png)
+
+----------------
 
 Common Elements
 -------
@@ -58,23 +61,37 @@ Don't use headings to just make the text bigger or bold. Use them to add meaning
 
 `div` and `span` are purely for building the structure of the site, they don't have any semantic meaning. `div` elements are block, while `span`s are inline.
 
-- `<p>` - Block level paragraph element. Used for chunks of text, often following a header element.
-- `<strong>` - Inline level element to imply that text is important. Styled with bold text.
-- `<b>` - Inline level element to make text bold
-- `<em>` - Inline level element to emphasize text. Adds italic styling to the text.
-- HTML5 structural elements:
-    - `<header>` - Used as an element to hold page header information (logo, navigation, heading)
-    - `<nav>` - Used as a container for navigational links
-    - `<article>` - Used to distinguish text as self-contained content on some topic. Think the body of a blog post.
-    - `<section>` - Used to identify a grouping of content. Like a section of articles.
-    - `<aside>` - Used for "side" content such as sidebars, notes, or inserts.
-    - `<footer>` - Identifies the content at the end of the page
+- `<html>` Wraps **all** content within an HTML page.
+- `<head>` Non content element, used purely to define configuration for the page such as the title in the tab, loading css, and other meta information.
+- `<body>` Wraps all content meant to be viewable to the user.
+- `<p>` Block level paragraph element. Used for chunks of text, often following a header element.
+- `<strong>` Inline level element to imply that text is important. Styled with bold text.
+- `<em>` Inline level element to emphasize text. Adds italic styling to the text.
+- `<img>` Used to add pictorial content, usually a jpeg, png, or gif.
+- `<a>` Anchor tag, this is primarily used for hyperlinks to link to another webpage on the internet.
+- `<div>` Block element used to build sections and structure .
+- `<ul>` Unordered List, Block element used to begin a list (bullets).
+- `<ol>` Ordered List, block element used to begin a list (numbered)
+  - `<li>` Block element to add a list item to any type of list
+- `<table>` Block element used for tabular data (not positioning)
+  - `<tr>` Table Row, used within a table to add a row to the table
+    - `<th>` Table Header, used within a table row to add a header cell
+    - `<td>` Table Data, used within a table row to add a data cell
 
-Look at this [PDF] formatted using Word™ and it's built in formats, identify as many elements as possible that have HTML equivalents.
+#### HTML5 structural elements:
 
-<!-- TODO: Add walkthrough of adding each type of thing to a page -->
+- `<header>` Used as an element to hold page header information (logo, navigation, heading)
+- `<nav>` Used as a container for navigational links
+- `<article>` Used to distinguish text as self-contained content on some topic. Think the body of a blog post.
+- `<section>` Used to identify a grouping of content. Like a section of articles.
+- `<aside>` Used for "side" content such as sidebars, notes, or inserts.
+- `<footer>` Identifies the content at the end of the page
 
-<!-- TODO: Add activity of researching the following things individually then presenting -->
+For reference of these tags and more, refer to the [htmldog tag docs](http://www.htmldog.com/references/html/tags/).
+
+Look at this [PDF](https://github.com/code-builders/curriculum/blob/master/html/word-doc.pdf) formatted using Word™, identify as many elements as possible that have HTML equivalents.
+
+Choose one of the six following topics, in your work today take some extra time to research the element(s), be prepared to share your knowledge about the topic with the rest of the class:
 
 - lists (ol/ul/nav)
 - anchor & img
