@@ -94,8 +94,8 @@ Look at this [PDF](https://github.com/code-builders/curriculum/blob/master/html/
 Choose one of the six following topics, in your work today take some extra time to research the element(s), be prepared to share your knowledge about the topic with the rest of the class:
 
 - lists (ol/ul/nav)
-- anchor & img
+- a/img
 - table/thead/tr/th/td/tbody
 - div/section/p
-- header/footer/article/aside
+- h1-h6/em/strong
 - head/title/meta
