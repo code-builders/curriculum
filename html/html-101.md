@@ -1,7 +1,5 @@
 # HTML
 
-### (Work in progress)
-
 HTML (HyperText Markup Language), gives structure to the site by defining sections, for example, headings, paragraphs, or images.
 
 Semantics
