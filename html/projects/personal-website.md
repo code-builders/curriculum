@@ -2,8 +2,6 @@
 
 You will create a personal website used to promote yourself as a developer. Your site should have at least two distinct sections (can be separate pages or not). Design your site to the best of your ability, if you don't consider yourself a great artistic designer, find a group of sites that you really like and let some of their designs guide yours.
 
-In this project you are
-
 - Bio
   - Name
   - Photo
