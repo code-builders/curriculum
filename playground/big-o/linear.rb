@@ -6,7 +6,7 @@ require_relative "big_o"
 
 arr1 = (1..1_000).to_a
 arr2 = (1..2_000).to_a
-arr3 = (1..4_000).to_a
+arr3 = (1..100_000).to_a
 
 start = Time.now
 100.times { BigO.new(arr1).how_many_in_array(100) }
