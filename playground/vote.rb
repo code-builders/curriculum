@@ -1,16 +1,20 @@
 class Vote
-  $total = 0
+  attr_accessor :question
+  attr_reader :results
 
-  def initialize
-    $total += 1
+  def initialize(q)
+    @question = q
+    @results  = {}
   end
 
-  def self.vote_for(name)
-    # vote for a person
-    $total += 1
+  def cast(answer)
+    @results[answer] ||= 0
+    @results[answer] += 1
   end
 
-  def self.total_votes
-    $total
+  def total
+    sum = 0
+    @results.values.each {|n| sum += n }
+    sum
   end
 end
