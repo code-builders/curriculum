@@ -40,6 +40,7 @@ Use `puts` to display the output in the terminal. The output should not include 
 
 - If you used a script, transfer the above logic to a class.
 - Add a method to the class which writes the parsed HTML into a file with the `File` class.
+- Allow each value to be passed into `.new`, so generated the HTML can easily be re-used.
 - Using the Array below and the HTML below, allow the content between `{{being-posts}}` and `{{end-posts}}` to be replaced for each element in the array.
 
 ```rb
