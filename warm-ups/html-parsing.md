@@ -3,7 +3,9 @@
 
 ### Base Requirements
 
-Create a script or class to parse the below html, replace any content with `{{}}` with new value using Rubys `.gsub` method. The values to use should be:
+Create a script or class to parse the below html, replace any content with `{{}}` with new value using Rubys `.gsub` method.
+
+The values to use should be:
 
 - `{{title}}`: A title of your choosing, something like "Blog of Bookis".
 - `{{name}}`: Your name
@@ -31,6 +33,8 @@ Create a script or class to parse the below html, replace any content with `{{}}
   </body>
 </html>
 ```
+
+Use `puts` to display the output in the terminal. The output should not include any of the `{{}}` characters. For example `<h1>{{name}}'s Blog</h1>` should be come `<h1>Bookis's Blog</h1>`.
 
 ## Extended requirements
 
