@@ -3,15 +3,7 @@
 
 ### Base Requirements
 
-Create a script or class to parse the below html, replace any content with `{{}}` with new value using Rubys `.gsub` method.
-
-The values to use should be:
-
-- `{{title}}`: A title of your choosing, something like "Blog of Bookis".
-- `{{name}}`: Your name
-- `{{post-title}}`: A title of a blog post that you would like to write.
-- `{{post-body}}`: A sentence or two of the blog post.
-- `{{post-created_at}}`: Pretend this post was published on October 1st, use the `Time` class and `.strftime` to display the time as "5pm October 1st, 2015". Remember [foragoodstrftime](http://www.foragoodstrftime.com).
+Create a script or class to parse the below html, replace any content within `{{}}` with new values using Rubys `.gsub` method.
 
 ```html
 <!DOCTYPE html>
@@ -34,14 +26,24 @@ The values to use should be:
 </html>
 ```
 
-Use `puts` to display the output in the terminal. The output should not include any of the `{{}}` characters. For example `<h1>{{name}}'s Blog</h1>` should be come `<h1>Bookis's Blog</h1>`.
+The values to use should be:
+
+- `{{title}}`: A title of your choosing, something like "Blog of Bookis".
+- `{{name}}`: Your name
+- `{{post-title}}`: A title of a blog post that you would like to write.
+- `{{post-body}}`: A sentence or two of the blog post.
+- `{{post-created_at}}`: Pretend this post was published on October 1st, use the `Time` class and `.strftime` to display the time as "5pm October 1st, 2015". Remember [foragoodstrftime](http://www.foragoodstrftime.com).
+
+
+
+Use `puts` to display the output in the terminal. The output should not include any of the `{{}}` characters. For example `<h1>{{name}}'s Blog</h1>` should become `<h1>Bookis's Blog</h1>`.
 
 ## Extended requirements
 
 - If you used a script, transfer the above logic to a class.
 - Add a method to the class which writes the parsed HTML into a file with the `File` class.
-- Allow each value to be passed into `.new`, so generated the HTML can easily be re-used.
-- Using the Array below and the HTML below, allow the content between `{{being-posts}}` and `{{end-posts}}` to be replaced for each element in the array.
+- Allow each value to be passed into `.new`, so concept HTML can easily be re-used with different values.
+- Using the Array and new HTML below, allow the content between `{{begin-posts}}` and `{{end-posts}}` to be replaced for each element in the array.
 
 ```rb
   [
@@ -187,7 +189,7 @@ html_template.gsub!("{{post-body}}", "My time with the code builders students ha
 
 puts html_template
 ```
-1. Next we need to use the `Time` class to parse to display a time, we will want to add the time module to the top of our file with `require`.
+1. Next we need to use the `Time` class to parse and display a time, we will want to add the time module to the top of our file with `require`.
 ```rb
 require "time"
 
