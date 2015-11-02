@@ -32,29 +32,41 @@ body {
 
 .container {
   margin: 0 auto;
-  width: 1000px;
+  max-width: 1000px;
+  width: 100%;
 }
 
-.tooltip {
+.box {
   position: relative;
+  float: left;
+  width: 31.33333%;
+  margin-left: 3%;
 }
 
-.tooltip:after {
-  max-width: 100px;
-  font-size: 12px;
-  font-weight: 100;
-  display: none;
-  position: absolute;
-  top: -2em;
-  border: 1px solid #ddd;
-  background-color: #eee;
-  padding: 3px;
-  border-radius: 3px;
-  width: 100px;
-  height: 1em;
-  content: attr(data-tooltip-text);
+.box:first-child {
+  left: -200px;
+  margin-left: 0px;
 }
 
-.tooltip:hover:after {
+.box img {
+  width: 100%;
+}
+.work {
+}
+
+.work:after {
+  content: "";
+  clear: both;
   display: block;
+}
+
+.next {
+  margin-top: 200px;
+}
+
+.image-title {
+  color: white;
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
 }
