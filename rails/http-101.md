@@ -1,4 +1,4 @@
-# Networking 101
+# HTTP 101
 
 A computer network is a collection of computers and devices connected using communication devices (routers, cables, wifi).
 
@@ -23,12 +23,16 @@ Hypertext Transfer Protocol (HTTP) function as a request-response protocol.
 A client sends an HTTP request and a server sends back an HTTP response.
 
 Each of these are just text sent over our network. A series of technologies take this text, carry it to the intended destination, and make sense of it.
-Socket.tcp("localhost", 3000) {|sock|
+
+```rb
+Socket.tcp("localhost", 3333) {|sock|
   sock.print "GET / HTTP/1.1\r\n\r\n"
   sock.close_write
   puts sock.read
 }
-Request
+```
+
+#### Request
 ```
 GET / HTTP/1.1
 User-Agent: curl/7.30.0
@@ -39,7 +43,7 @@ Accept: */*
 order_item[product_id]=4
 ```
 
-Response
+#### Response
 ```
 HTTP/1.1 200 OK
 Content-Type: text/html
@@ -51,6 +55,44 @@ Connection: Keep-Alive
 A barebones rack app
 ```
 
+
+### Verbs
+
+HTTP is minimum required data for a valid HTTP request is three things:
+1. Verb (also called method which is confusing because it's not like a method in Ruby)
+2. Path
+3. HTTP version
+
+### Verb
+
+HTTP verbs allow the same URL to be used but to specify different action the user would like to take.
+
+
+| Verb | Intent |
+| :------------- | :------------- |
+| GET | Retreive information, typically HTML |
+| POST | Create information, typically writing a new record to a database |
+| PATCH | Update information, typically modifying an existing record in a database |
+| PUT | *same as PATCH* |
+| DELETE | Remove information, typically deleting a record from a database |
+
+The verb makes up the first portion of an HTTP request.
+
+**GET** /profile HTTP/1.1
+
+For example if we had a route defined in an application which is "/profile" (which is meant to represent the currently logged in user). A `GET` request to this URL would typically be used to get HTML to display to the user, most likely a dashboard showing their profile. Alternately a `DELETE` request could be made, this would typically delete the user or their profile.
+
+### Path
+
+The path is the most straightforward, this is like the location of the resource, before web apps this would actually be the path to a file, in the age of web apps, the HTML is dynamically generated and thus doesn't necessarily map directly to a single file.
+
+GET **/profile** HTTP/1.1
+### HTTP version.
+
+We don't need to really worry about this one, it just tells the receiving server which version of HTTP to use, this servers can detect which version is being sent and handle it correctly.
+
+GET /profile **HTTP/1.1**
+
 Web Server
 ----------
 
@@ -58,9 +100,6 @@ The webserver is a running process on the server which monitors incoming HTTP re
 and respond with an HTTP response. In simpler times the web server would simply locate
 an HTML file then read and return the contents. Remember when websites commonly had .html
 at the end of the URL?
-
-For our purposes we won't be using statically saved HTML files, but we'll use ruby
-to generate the HTML content dynamically each time a request is made.
 
 A webserver interfaces your application with incoming HTTP requests on the server.
 

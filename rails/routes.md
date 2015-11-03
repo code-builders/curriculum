@@ -25,7 +25,7 @@ The two most important parts of this request are:
 Routes are analogous to an old-timey telephone switch board. When an HTTP request comes into our application our defined routes connect the request data to the correct Controller action. We define routes in our `config/routes.rb` file. The `routes.rb` file is generated when we run the `rails new` command.
 
     Some::Application.routes.draw do
-      get "/users" => "users#index"
+      get "/users", to: "users#index"
     end
 
 Lets go over the pieces of this code:
@@ -33,7 +33,7 @@ Lets go over the pieces of this code:
   - The **route definition**:
     - **request method**: `get` in this example
     - **path**: what will be matched with the URL in the HTTP request, `"/users"` in this example
-    - `=>`: think of this as the router, this points the request path to the controller and action where this request will go.
+    - `to:`: think of this as the router, this points the request path to the controller and action where this request will go.
     - **controller and action**: defining the controller and action, split by the `#`. `"users#index"` in this case this would point to the `index` action in the `UsersController`.
 
 ![Rails Request Cycle](../rails/rails-request-cycle.jpg)
