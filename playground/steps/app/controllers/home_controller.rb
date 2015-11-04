@@ -7,4 +7,8 @@ class HomeController < ApplicationController
   def about_me
 
   end
+
+  def create
+
+  end
 end

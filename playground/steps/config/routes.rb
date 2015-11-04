@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
 
+
+  post "/users", to: "home#create"
+  # POST /users HTTP/1.1
+  # "home" -> HomeController.new.create
+
   get "/", to: "home#index"
+  # GET / HTTP/1.1
+  # "home" -> HomeController.new.index
+
   get "/about-me", to: "home#about_me"
+  # GET /about-me HTTP/1.1
+  # "home" -> HomeController.new.about_me
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
