@@ -52,6 +52,19 @@ class HomeController < ApplicationController
 end
 ```
 
+
+```html
+<h1>I'm <%= @user %></h1>
+
+<h2>Code Builders students:
+<ul>
+  <% @students.each do |student| %>
+    <li><%= student %></li>
+  <% end %>
+</ul>
+<a href="/">Go Home</a>
+
+```
 Instance variable can also be used in the application layout file.
 
 ```html
