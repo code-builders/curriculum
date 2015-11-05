@@ -7,6 +7,7 @@ Create a `Dice` class with the following:
   - The method takes one argument, an `Integer`, which represents the number of dice to roll
   - For the number of dice to roll, add a random number (1-6) into the `values` array
   - The method returns the `values` array for the user to see what the result of the dice rolling was.
+  - Each new roll of the same dice object should clear the `values` array to only return the values of each specific roll.
 
 Here is an example of the expected usage:
 
