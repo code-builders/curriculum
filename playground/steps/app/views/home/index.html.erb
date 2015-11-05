@@ -1,5 +1,12 @@
-<h1>Hello World</h1>
+<h1 class='greeting <%= @greeting_class %>'>Hello World</h1>
 <p>The time is <%= Time.now.strftime("%I:%M:%S %p") %></p>
 
+<ul class='students'>
+
+  <% @students.shuffle.each do |name| %>
+    <li><%= name.upcase %></li>
+  <% end %>
+
+</ul>
+
 <a href="/about-me">About me</a>
-<img src="/assets/me.jpg" />
