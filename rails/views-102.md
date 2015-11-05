@@ -1,13 +1,5 @@
 ## Rails Views 101
 
-Rails views are typically HTML files that allow embedded ruby `erb`. The behavior of the HTML is exactly the same as a regular HTML file. The extra bit we get is being able to use `erb` tags to evaluate ruby within the HTML. There are several types of `erb` tags. All `erb` tags are wrapped in `<% %>`.
-
-### Types of `erb` tags
-
-- `<%= "Blah" %>` - With an equal sign, this is a printing erb tag, the value returned from the ruby will be printed into the HTML
-- `<% if true %>` - Without an equal sign, this is a non-printing tag, ruby will be evaluated but nothing will be printed into the HTML
-- `<%# Something here %>` - With an octothorpe, this is a comment erb tag.
-
 Common Helper Methods
 -------
 
@@ -37,6 +29,37 @@ The above `link_to` will give you this HTML:
 ```
 <a href="/profile" class="link">About Me</a>
 ```
+
+
+button_to(text, path)
+---------------------
+
+`button_to` is used to generate a form with where the only input is a submit button.
+This is generally used to submit HTTP request with a method type different from GET.
+
+```
+<%= button_to "Remove That", "/products/1" %>
+```
+The above `button_to` will give you this HTML:
+```
+<form method="POST" action="/products/1" >
+  <div><input value="Remove That" type="submit" /></div>
+</form>
+```
+
+`button_to` will default to an http method of POST, but that can be changed by passing an
+optional argument of method.
+
+```
+<%= button_to "Remove That", "/products/1", method: :delete %>
+```
+The above `button_to` using the optional parameter will give you this HTML:
+```
+<form method="DELETE" action="/products/1" >
+  <div><input value="Remove That" type="submit" /></div>
+</form>
+```
+
 
 image_tag
 ---------
