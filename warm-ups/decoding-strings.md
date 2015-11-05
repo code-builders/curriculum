@@ -4,7 +4,7 @@ Create a class that can decode the cryptic string below using the following tabl
 
 ```ruby
 'Hello%20%22World%22%20%2D%201%20is%20%3E0%2E'
-# => 'Hello "World" - 1 is > 0.'
+# => 'Hello "World"'
 ```
 
 
