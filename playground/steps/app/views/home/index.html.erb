@@ -1,3 +1,16 @@
+<% if @greeting_class == "home" %>
+  <h3>I'm happening</h3>
+  <%= "hello " * 4 %>
+<% end %>
+
+<% [1,2,3,4].each do |n| %>
+  <h3>
+    Roll <%= n %> is:
+    <%= (1..6).to_a.sample %>
+  </h3>
+<% end %>
+
+
 <h1 class='greeting <%= @greeting_class %>'>Hello World</h1>
 <p>The time is <%= Time.now.strftime("%I:%M:%S %p") %></p>
 
@@ -9,4 +22,7 @@
 
 </ul>
 
-<a href="/about-me">About me</a>
+<!-- <a href="/about-me" class="big-link">About me</a> -->
+<%= link_to "About me", "/about-me", class: "big-link" %>
+
+<%= render "bio" %>

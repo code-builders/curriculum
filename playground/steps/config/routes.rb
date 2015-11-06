@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # post "/users", to: "home#create"
   # POST /users HTTP/1.1
   # "home" -> HomeController.new.create
-
+  root to: "home#index"
   get "/", to: "home#index"
   # GET / HTTP/1.1
   # "home" -> HomeController.new.index

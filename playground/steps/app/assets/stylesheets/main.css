@@ -7,5 +7,10 @@ p {
 }
 
 .special p {
+  background-image: url("me.jpg")
+}
 
+
+.dollar-symbol {
+  color: green;
 }

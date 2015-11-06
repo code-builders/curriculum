@@ -8,13 +8,7 @@
 </head>
 <body>
 
-<% if @bg %>
-  <!-- @bg = "bg bg-opaque" -->
-  <!-- @bg = "bg" -->
-  <div class="<%= @bg %>"></div>
-<% end %>
-
-<div class='greeting <%= @greeting_class %>'>
+<div class="<%= @greeting_class %>">
   I'm <%= @user %>
 </div>
 
