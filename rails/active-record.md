@@ -78,11 +78,6 @@ Array Conditions
 Student.where("name = ?", "Rosalita")
 ```
 
-Placeholder Conditions
-```ruby
-Student.where("name = :name AND cohort = :cohort", name: "Rosalita", cohort: "Fall 2015")
-```
-
 Hash Conditions
 ```ruby
 Student.where(name: "Rosalita", cohort: "Fall 2015")

@@ -16,7 +16,7 @@ Each time an HTTP request comes in, the application creates a new instance of th
 The HTTP request body or query string is parsed by ruby and turned into a hash.
 
 
-Like we said ealier, params is not technically a hash, it's an instance of `ActionController::Parameters`. This object is a hash like object.
+Like we said earlier, params is not technically a hash, it's an instance of `ActionController::Parameters`. This object is a hash like object.
 It can be accessed with the same hash methods.
 
 ```ruby
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 end
 ```
 
-The user would be given the attribute which specifies administrative previleges.
+The user would be given the attribute which specifies administrative privileges.
 Remember, params is parsed from a HTTP request, an HTTP request is submitted simply through an HTML form.
 A malicious user could easily edit the HTML to include the `user[admin]` element.
 
