@@ -1,0 +1,25 @@
+<h1>Too Doo</h1>
+
+<ul>
+  <% @tasks.each do |t| %>
+    <li>
+      <!-- <a href="/tasks/2">Eat Lunch</a> -->
+      <%= link_to t.name, show_a_task_path(t.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<form action="/tasks" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <div>
+    <h4>
+      <label for="name-input">Task</label>
+    </h4>
+    <input type="text" id="name-input" name="task_name" />
+  </div>
+  <div>
+    <input type="checkbox" id="complete-checkbox" name="task_complete"/>
+    <label for="complete-checkbox">Complete?</label>
+  </div>
+  <input type="submit" />
+</form>

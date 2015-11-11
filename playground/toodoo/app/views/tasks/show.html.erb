@@ -1,0 +1,10 @@
+<h1 class="<%= 'done' if @task.complete %>">
+  <%= @task.name  %>
+</h1>
+<%= link_to "<-", tasks_path %>
+<!--  -->
+<!-- <%# if @task.complete %>
+  <h2 class='done'><%#= @task.name %></h2>
+<%# else %>
+  <h1><%#= @task.name %></h1>
+<%# end %> -->

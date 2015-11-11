@@ -1,0 +1,12 @@
+== README
+ - [x] Add a Task model
+  - [x] name
+  - [x] complete
+ - [x] Add a controller
+ - [x] Add a view to see all tasks
+ - [x] Add a view to see a specific task
+
+ - [x] Link from index to each specific task
+ - [ ] Add a task
+ - [ ] Update a task (mark as complete)
+ - [ ] Delete a task
