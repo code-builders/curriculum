@@ -9,6 +9,14 @@
   <% end %>
 </ul>
 
+<% if @task %>
+  <ul>
+    <% @task.errors.each do |c, msg| %>
+      <li><%= c %> <%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <form action="/tasks" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
   <div>
