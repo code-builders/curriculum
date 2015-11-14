@@ -19,7 +19,7 @@ $("#someId");  // returns the element with id == "someId"
 ## Functions that take functions
 
 Many jQuery methods take functions as parameters. These are often
-referred to as "callbacks."
+referred to as "callbacks." This is similar to Ruby blocks (but actually different, we'll learn how later)
 
 ```javascript
 $("#someId").click(function () { // this is an "anonymous function"
