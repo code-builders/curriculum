@@ -27,7 +27,7 @@ We try to separate concerns in web applications:
 
 ### Playing with JavaScript
 
-Safai, Firefox, and Chrome all support a JavaScript console, which
+Safari, Firefox, and Chrome all support a JavaScript console, which
 allows us to write JavaScript directly in the browser. In Chrome, you
 can access the console either via the menu (View > Developer >
 JavaScript Console), or via the keyboard shortcut (Command - Option - J).
@@ -36,6 +36,11 @@ There are also several sites that allow you to live code JavaScript,
 HTML, and CSS. The three most popular are [JSFiddle](//jsfiddle.net),
 [CodePen](//codepen.io), and [JS Bin](//jsbin.com). I'll be using
 JSFiddle for demonstrations, but it's a matter of taste.
+
+Additionally `node` provides a command line REPL for javascript similar to rubys `irb`. You can enter it simply by typing `node` in the terminal.
+
+Although, typically the in-browser console is used to test out javascript code.
+
 
 ### Getting Help
 
@@ -53,7 +58,7 @@ Declare all variables with the var operator!
 var five = 5;
 ```
 
-If you omit ```var``` you will get a global variable, which can lead
+If you omit `var` you will get a global variable, which can lead
 to all sorts of problems. JUST DON'T DO IT!
 
 ### Types
@@ -89,7 +94,7 @@ if (blahblah) {  // blahblah has not been declared it returns undefined
 * Number is a numeric value including integers (1, 2, 3, etc.), floats
   (1.4, -40.1), infinity (+Infinity, -Infinity), and NaN which means
   "not a number." NaN is returned when you do a numeric operation on
-  anything that's not a Number. 
+  anything that's not a Number.
 
 ```javascript
 var four = 4,
@@ -162,3 +167,21 @@ adder;        // this returns the function that you just declared
 adder(1, 2);  // 3
 ```
 
+### Some practice:
+
+1. Practice with creating and assigning each of the following types of objects to variables:
+  - Boolean
+  - Number
+  - String
+  - Array
+1. Create an object (remember this is like a Ruby Hash) with the following keys:
+  - `name` - String
+  - `age` - Number
+  - `sleepy` - Boolean (are you sleepy?)
+  - `pets` - Array (of pet names)
+1. Practice accessing each of the values from the object using the `[]` accessor method.
+1. Practice accessing each of the values from the object using the dot notation
+
+
+--------
+*Originally authored by [Dean Hudson](//twitter.com/deanero)*
