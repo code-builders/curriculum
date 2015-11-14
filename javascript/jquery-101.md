@@ -48,6 +48,21 @@ The following functions are of practical value. Look 'em up!
 * .html()
 * .click()
 * .submit()
+* .show()
+* .hide()
+* .toggle()
+* .addClass()
+* .removeClass()
+
+## Navigating the DOM tree:
+
+* .children()
+* .find()
+* .siblings()
+* .next()
+* .parent()
+* .parents()
+
 
 ## Simple DOM Manipulation
 
