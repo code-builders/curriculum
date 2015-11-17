@@ -38,7 +38,7 @@ random_value foo: "bar", boo: "rad"
 ```rb
 # 4 - no parenthesis, w/braces assigned to a var
 hash = {foo: "bar", boo: "rad"}
-random_value(hash)
+random_value hash
 ```
 
 ```rb

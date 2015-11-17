@@ -10,13 +10,14 @@ class TasksController < ApplicationController
 
   def get_it_done
     # add stuff to db
-    @task          = Task.new
-    @task.name     = params[:task_name]
-    if params[:task_complete].blank?
-      @task.complete = false
-    else
-      @task.complete = params[:task_complete]
-    end
+    # @task.name     = params[:task][:name]
+    # if params[:task][:complete].blank?
+    #   @task.complete = false
+    # else
+    #   @task.complete = params[:task][:complete]
+    # end
+    @task = Task.new(task_params)
+    raise
     if @task.save
       redirect_to "/tasks"
     else
@@ -24,6 +25,12 @@ class TasksController < ApplicationController
       @tasks = Task.all
       render :index
     end
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:name, :complete)
   end
 
 end

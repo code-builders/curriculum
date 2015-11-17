@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "/tasks/:id", to: "tasks#show",  as: :show_a_task
   get "/tasks",     to: "tasks#index", as: :tasks
   post "/tasks",    to: "tasks#get_it_done"
-
+  post "/users",    to: "users#create"
   # These two lines do the same thing
   root to: "tasks#index"
   get "/",          to: "tasks#index"

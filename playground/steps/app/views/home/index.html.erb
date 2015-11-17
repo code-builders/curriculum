@@ -23,6 +23,11 @@
 </ul>
 
 <!-- <a href="/about-me" class="big-link">About me</a> -->
-<%= link_to "About me", "/about-me", class: "big-link" %>
+<%= link_to("About me", "/about-me", id: "someid", class: "big-link") %>
+
+def link_to(name, path, hash_options)
+
+end
+
 
 <%= render "bio" %>
