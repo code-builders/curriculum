@@ -5,6 +5,7 @@
     <li>
       <!-- <a href="/tasks/2">Eat Lunch</a> -->
       <%= link_to t.name, show_a_task_path(t.id) %>
+
     </li>
   <% end %>
 </ul>
@@ -27,8 +28,11 @@
   <input type='submit' />
 </form>
 
+<%= form_for User.last, url: "" do |f| %>
+<% end %>
 <h2>Create a Task</h2>
 <form action="/tasks" method="POST">
+  <input type="hidden" name="_method" value="PATCH" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
   <div>
     <h4>
