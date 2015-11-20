@@ -5,7 +5,17 @@
     <li>
       <!-- <a href="/tasks/2">Eat Lunch</a> -->
       <%= link_to t.name, show_a_task_path(t.id) %>
-
+      <form action="/tasks/<%= t.id %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        <input type="hidden" name="_method" value="PATCH">
+        <input type="text" name="task_name" value="<%= t.name %>">
+        <input type='submit' value="Update">
+      </form>
+      <form action="/tasks/<%= t.id %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        <input type="hidden" name="_method" value="DELETE">
+        <input type='submit' value="x">
+      </form>
     </li>
   <% end %>
 </ul>

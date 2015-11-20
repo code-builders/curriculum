@@ -1,0 +1,15 @@
+<h1>Flash Cards</h1>
+
+<div class="cards">
+  <% @cards.each do |card|%>
+    <div class='card'>
+      <h2 class='question'><%= card.question %></h2>
+      <h2 class='answer'><%= card.answer %></h2>
+      <div class='card-info'>
+        Subject: <%= card.subject %>
+        Level: <%= card.level %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<a href="#" class='next-card'>Next</a>

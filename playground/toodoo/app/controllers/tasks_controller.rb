@@ -27,6 +27,19 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    @task = Task.find(params[:id])
+    @task.complete = true
+    @task.save
+    redirect_to root_path
+  end
+
+  def get_it_gone
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to root_path
+  end
+
   private
 
   def task_params

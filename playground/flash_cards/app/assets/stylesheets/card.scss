@@ -1,0 +1,27 @@
+// * {outline: 1px solid pink;}
+
+.card {
+  display: none;
+  text-align: center;
+  width: 400px;
+  margin: 100px auto;
+  border: 1px solid gray;
+  background-color: rgb(248, 249, 239);
+}
+
+.cards .card:first-child {
+  display: block;
+}
+
+.card .card-info {
+  font-size: 12px;
+  color: gray;
+}
+
+.card .answer {
+  display: none;
+}
+
+.card h2 {
+  margin: 65px 0;
+}
