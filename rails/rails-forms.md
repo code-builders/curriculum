@@ -35,13 +35,19 @@ would be to change the HTTP method
 </form>
 ```
 
+`form_tag` automitcally adds the `authenticity_token` to the form, again we don't need to focus on what the authenticity token is, but we no longer will need to add the line:
+
+```html
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+```
+
 Within the `form_tag` block additional form helpers can be used to create inputs and labels.
 
 `text_field_tag` is the the method to make a common text field. The first argument
 it expects is the HTML name attribute.
 ```
 <%= form_tag "/products" do %>
-  <%= text_field_tag :title
+  <%= text_field_tag :title %>
 <% end %>
 ```
 ```html
@@ -57,7 +63,23 @@ More complex name attributes can be given
 <!-- <input type='text' name="product[title]" /> -->
 ```
 
-Many other form builders are available to help build any type of form. Look at the
+The second argument given to `text_field_tag` is the `value` key of the html, or what will be typed into the field by default:
+
+```html
+<%= text_field_tag "product[title]", "Frisbee" %>
+<!-- <input type='text' name="product[title]" value="Frisbee"/> -->
+```
+
+Many other form builders are available to help build any type of form such as
+
+- `select_tag`
+- `check_box_tag`
+- `radio_tag`
+- `password_field_tag`
+- `email_field_tag`
+- `hidden_field_tag`
+
+And tons more. Look at the
 [docs](http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html) for a list of available helpers
 
 ## form_for
@@ -78,7 +100,7 @@ the action to submit to using the RESTful convention (POST to '/products' for cr
 ```
 
 The `form_for` block is given an argument (commonly `f` for "form builder"),
-this object has methods very similar to the generic form builders like `text_field_tag`, but Rails can make assumptions about the form structure because of what it knows about the object.
+this object has methods very similar to the generic form builders like `text_field_tag`, but Rails can make assumptions about the form structure because of what it knows about the object, such as pre-filling the field based on the active record objects attributes.
 
 ```erb
 <%= form_for @product do |f| %>
