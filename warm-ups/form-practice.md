@@ -1,6 +1,6 @@
 ## Form Practice
 
-Create a simple HTML page (either static or within Rails) with a form that submits to this url: ``http://requestb.in/1h4akn21``. This is a special URL that allows us to debug form submissions. You can view form submissionThe form should have the following:
+Create a simple HTML page (either static or within Rails) with a form that submits to this url: ``http://requestb.in/1h4akn21``. This is a special URL that allows us to debug form submissions. You can view form submission [here](http://requestb.in/1h4akn21?inspect). The form should have the following:
 
 - A `POST` method
 - A text field named `email`
