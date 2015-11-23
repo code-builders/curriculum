@@ -4,4 +4,8 @@ class StudyController < ApplicationController
     @cards = FlashCard.all
   end
 
+  def new
+
+  end
+
 end

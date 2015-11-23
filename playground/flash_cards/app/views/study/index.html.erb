@@ -1,4 +1,7 @@
-<h1>Flash Cards</h1>
+<h1>
+  Flash Cards
+  <%= link_to "+", "/flash-cards/new" %>
+</h1>
 
 <div class="cards">
   <% @cards.each do |card|%>
@@ -13,7 +16,3 @@
   <% end %>
 </div>
 <a href="#" class='next-card'>Next</a>
-
-<%= form_tag "/flash_cards" %>
-  <%= text_field_tag :
-<% end %>

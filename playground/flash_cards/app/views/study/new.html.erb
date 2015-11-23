@@ -1,0 +1,27 @@
+<h1>Add Flash Card</h1>
+
+<!-- <form action="/blah" method="POST"> -->
+<%= form_tag "/flash-cards" do %>
+
+  <div>
+    <%= label_tag :question %>
+    <%= text_area_tag :question, "", :placeholder => "Question", class: "text-field" %>
+  </div>
+
+  <div>
+    <%= label_tag :answer %>
+    <%= text_area_tag :answer, "", :placeholder => "Answer", class: "text-field" %>
+  </div>
+
+  <%= select_tag :level, options_for_select([1,2,3,4,5,6,7,8,9,10]) %>
+
+  <!-- <select name="level">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    ...
+  </select> -->
+
+  <%= submit_tag "Create Flash Card" %>
+<!-- </form> -->
+<% end %>
