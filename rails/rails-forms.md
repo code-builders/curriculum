@@ -16,7 +16,7 @@ submission path, (the `action` attribute in the `form` tag). The `method` attrib
 This would generate...
 ```html
 <form action="/products" method="post">
-  
+
 </form>
 ```
 
@@ -24,14 +24,14 @@ Additional arguments can be given after the path in the form of a hash. The most
 would be to change the HTTP method
 
 ```erb
-<%= form_tag "/products", method: :put do %>
+<%= form_tag "/products", method: :patch do %>
 
 <% end %>
 ```
 
 ```html
 <form action="/posts" method="post">
-  <input name="_method" type="hidden" value="put" />
+  <input name="_method" type="hidden" value="patch" />
 </form>
 ```
 
@@ -63,7 +63,7 @@ Many other form builders are available to help build any type of form. Look at t
 ## form_for
 `form_for` is very similar, except it binds the form to an ActiveRecord object.
 The only required argument is takes is any ActiveRecord object. Rails will assume
-the action to submit to using the RESTful convention (POST to '/products' for creating new records and PUT/PATCH to '/products/:id' for updating existing records, for example).
+the action to submit to using the RESTful convention (POST to '/products' for creating new records and PATCH to '/products/:id' for updating existing records, for example).
 
 ```erb
 <%= form_for @product do |f| %>

@@ -22,7 +22,6 @@ Build a single-serving (only one user, you!) rails application to help track  so
     - Redirects to the `index` page
 - Design the page to match the themes you've chosen
 
-
 Keep this application as simple as possible. Spend time studying each piece and identifying the HTTP cycle through rails which happens with any given page load or form submission. Try some alternate study methods to get the concepts down, like drawing a diagram of your application or writing out in a english what is happening inside rails.
 
 ### Extended Requirements
