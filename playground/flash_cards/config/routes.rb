@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   get "/", to: "study#index"
-  get "/flash-cards/new", to: "study#new"
+  get "/flash-cards/new",   to: "study#new"
+  post "/flash-cards",      to: "study#create", as: :flash_cards
+  patch "/flash-cards/:id", to: "study#update", as: :flash_card
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
