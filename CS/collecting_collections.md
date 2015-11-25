@@ -1,40 +1,23 @@
-# Collecting Collections (and Other Loose Ends).
-
-## Doubly Linked Lists
-
-Remember our Linked List implementation? It looked
-something like this:
-
-```
-class ListItem
-  attr_accessor :data, :next
-  # other code that actually does stuff
-end
-```
-Which can be strung together to form a unidirectional
-list:
-
-![Singly Linked List](linked_list.png)
-
-The main problem with this implementation is that we can't go backwards–once we pass through a node, we'll have to iterate from the beginning to re-find that node.
-
-We can solve that problem by creating a reverse link in our data structure:
-
-```
-class DoublyLinkedListItem
-  attr_accessor :data, :prev, :next
-  # other code that does even more stuff
-end
-```
-![Doubly Linked List](doubly_linked.png)
-
-The doubly linked list can be traversed from either end, but at the cost of the additional complexity of managing a new set of pointers (the ```prev``` links).
+# Collecting Collections
 
 ## Abstract Data Types (ADTs), FWIW
 
 An abstract data type (or ADT) is an abstract representation of a data structure. ADTs allow us to talk about data structures independent of their implementation.
 
 Ruby Arrays, Hashes and other data types that we build on our own (like linked lists), are often used to implement our ADTs. We'll see examples of this when we look at stacks and queues.
+
+In Ruby the Array class if very powerful, it encapsulates many ideas within computer science. In a more fundamental programming language many of the functions of an Array would not be built in, but instead the programmer would have to implement them. In this lecture we'll talk about a few kinds of collections.
+
+## Linked Lists
+
+ Linked lists are a computer science data structure which is used to keep a list of items that are sequential.
+
+Linked lists are made up of single nodes which can be strung together to form a unidirectional
+list:
+
+![Singly Linked List](resources/linked_list.png)
+
+Let's code through making a linked list class in Ruby.
 
 ## Stacks and Queues
 
@@ -72,4 +55,4 @@ Implement a Queue class that uses a Ruby Array as its backing store. Be careful 
 
 ### Silver
 
-Implement a Queue class that uses a linked list as its underlying backing store. As above, you should only expose users of your class to the ```enqueue``` and ```dequeue``` methods, and not expose the underlying linked list. 
+Implement a Queue class that uses a linked list as its underlying backing store. As above, you should only expose users of your class to the ```enqueue``` and ```dequeue``` methods, and not expose the underlying linked list.

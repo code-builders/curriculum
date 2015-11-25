@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form Practice</title>
+  </head>
+  <body>
+
+    <form action="http://requestb.in/1h4akn21" method="POST">
+      <div>
+        <label for="user_email">
+          Email
+          <input type="email" name="email" id="user_email" placeholder="a@example.com">
+        </label>
+      </div>
+
+      <div>
+        <label for="user_username">Username</label>
+        <input type="text" name="username" id="user_username">
+      </div>
+
+      <div>
+        <label for="user_subscribe">
+          <input type="checkbox" value="true" name="subscribe" id="user_subscribe">
+          Subscribe to our newsletter
+        </label>
+      </div>
+
+      How did you learn about us?
+      <div>
+        <label for="user_google">
+          <input type="radio" name="referer" value="Google" id="user_google">
+          Google
+        </label>
+        <label for="user_friend">
+          <input type="radio" name="referer" value="Friend" id="user_friend">
+          Friend
+        </label>
+        <label for="user_other">
+          <input type="radio" name="referer" value="Other" id="user_other">
+          Other
+        </label>
+      </div>
+
+      <input type="submit" name="submit" value="Sign Up">
+    </form>
+
+
+  </body>
+</html>

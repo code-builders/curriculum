@@ -5,21 +5,11 @@ access from from ruby via a gem.
 
 ## Installing Gosu
 
-Unfortunately, we need to run Gosu on Ruby 1.9. Thankfully, we have
-rvm. To install and use Ruby 1.9:
-
-```
-$ rvm install 1.9
-$ rvm use 1.9
-Using /Users/dean/.rvm/gems/ruby-1.9.3-p545
-```
-
-On OS X, we're going to need to install a few support libraries to get Gosu
+On OS X, we're going to need to install a support library to get Gosu
 working:
 
 ```
-$ brew install libogg libvorbis
-$ brew install sdl2 --HEAD
+$ brew install sdl2
 ```
 
 Finally, we can just install the gem (Mac and Windows):
@@ -97,5 +87,3 @@ While ```initialize``` is called once when the game is started,
 ```update``` and ```draw``` are called every time through the game
 loop, or once per rendered frame in your game. On a fast computer with
 a good graphics card, this should be close to 60 times per second.
-
-
