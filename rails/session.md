@@ -1,10 +1,16 @@
 # Session
 
 The session is a hash like object (similar to params), but this object is persisted between requests.
-Sessions use a cookie in the browser to identify each unique session. The session is meant to store small amounts of data (4kB)
+Sessions use a "cookie" to store a unique id in the browser, when a browser makes any request it sends along the cookie information. A web application can use this unique id to keep track of each unique browser which has made requests to it. The default rails session is meant to store small amounts of data (4kB or less).
 
-The most common use is to store the id of a logged in user. The session is also a method on the controller.
+The most common use is to store the id of a logged in user. The session, similar to params, is also a method on the controller which gives us access to a hash.
+
+![Sessions](resources/session.jpg)
+
 From within a controller we can get and set session keys using the familiar hash syntax.
+
+
+In logged in user example, a user id key would be set in the session hash, then on each subsequent request the user id would be used from the session has to find the "current user".
 
 ```ruby
 class UsersController < ApplicationController
