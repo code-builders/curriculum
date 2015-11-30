@@ -19,6 +19,8 @@ You will create a database backed Rails application where owner/administrators c
 - Do not use gems for user authentication (such as Devise)
 - Do not use Rails `scaffold` generator (All other Rails generators are fine)
 
+### Tables
+
 - Products
   - name*
   - description
@@ -46,6 +48,7 @@ You will create a database backed Rails application where owner/administrators c
 ## User Stories
 
 - In the header on all pages
+  - I can click the logo/title to return to the homepage
   - I can click a link to my cart which contains the number of items in my cart, which takes me to a cart page
   - As a guest I can click a link to view a sign up page
   - As a guest I can click a link to view a sign in page

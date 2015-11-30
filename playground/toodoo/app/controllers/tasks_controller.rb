@@ -1,6 +1,16 @@
 class TasksController < ApplicationController
 
   def index
+    # @current_user = begin
+    #   User.find(session[:u_id])
+    # rescue ActiveRecord::RecordNotFound
+    #   nil
+    # end
+
+    if session[:u_id]
+      @current_user = User.find(session[:u_id])
+    end
+
     @tasks = Task.all
   end
 
