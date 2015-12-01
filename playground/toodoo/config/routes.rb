@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # /tasks/30
   # /tasks/blah
   # /tasks/new
+  get "/sign-out",  to: "sessions#sign_out", as: :sign_out
+  post "/sign-in",  to: "sessions#sign_in",  as: :sign_in
+
   get "/tasks/:id", to: "tasks#show",  as: :show_a_task
   get "/tasks",     to: "tasks#index", as: :tasks
   post "/tasks",    to: "tasks#get_it_done"
