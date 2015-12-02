@@ -5,7 +5,7 @@ Bootstrap is one of many HTML, CSS, and Javascript frameworks to provide common 
 Installation
 ------------
 
-Bootstrap can be installed in many ways including just downloading the css files, we are going to start with this simple approach but not all of the features will work, if you want to get the full features (icons), see the gem installation instructions at the bottom of this lecture.
+Bootstrap can be installed in many ways including just downloading the css files, we are going to start with this simple approach but not all of the features will work, if you want to get the full features (overrides), see the gem installation instructions at the bottom of this lecture.
 
 Start by downloading all of the files from [Bootstrap](http://getbootstrap.com/getting-started/#download) by clicking the "Download Bootstrap" button. Find the downloaded directory and within it, copy `css/bootstrap.css` into your application `app/assets/stylesheets/`, and the same with `js/bootstrap.js` into `/app/assets/javascripts`
 
@@ -60,6 +60,22 @@ So with `lg` we only get that style on desktop, anything smaller will use the de
 
 Further, we can nest grids, so inside of a `col-size-n` we can have another `row`, then we can put in another grid of twelve. In this case we can create a table like structure with our form.
 
+
+### Common Elements
+
+You can modify elements by adding classes to create common styles, we'll go over a few:
+
+- `.btn`
+- `.well`
+- `.form-input`
+- `.img-rounded .img-circle .img-thumbnail`
+- `.text-muted .text-primary .text-success .text-info .text-warning .text-danger`
+- `.pull-left .pull-right`
+- `.hidden`
+- `.label .label-default`
+- `.alert .alert-danger`
+
+There are **many** more components of bootstrap. Dig through their [documentation](http://getbootstrap.com/css/) to find more.
 
 ## Gem installation (optional)
 
