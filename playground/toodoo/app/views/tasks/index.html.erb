@@ -1,8 +1,10 @@
+<img src="http://placekitten.com/51/50" class='img-circle'>
+
 <% if @current_user %>
-  <small>Hello, <%= @current_user.username %></small>
-  <%= link_to "Sign out", "/sign-out" %>
+  <small class='label label-success'>Hello, <%= @current_user.username %></small>
+  <%= link_to "Sign out", "/sign-out", class: "btn btn-danger btn-xs" %>
 <% else %>
-  <%= form_tag "/sign-in" do %>
+  <%= form_tag "/sign-in", class: "pull-right" do %>
     Username
     <%= text_field_tag :username %>
     Password
@@ -11,75 +13,84 @@
     <%= submit_tag "Sign in" %>
   <% end %>
 <% end %>
+<div class='row'>
+  <div class='col-lg-6'>
+    <h1>Too Doo</h1>
+    <div class='alert alert-danger'>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    <ul>
+      <% @tasks.each do |t| %>
+        <li class='row'>
+          <!-- <a href="/tasks/2">Eat Lunch</a> -->
+          <div class='col-xs-5'>
+            <%= link_to t.name, show_a_task_path(t.id) %>
+          </div>
+          <form action="/tasks/<%= t.id %>" method="POST" class="col-xs-6">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="text" name="task_name" value="<%= t.name %>">
+            <input type='submit' value="Update" class='btn btn-default btn-sm'>
+          </form>
+          <form action="/tasks/<%= t.id %>" method="POST" class='col-xs-1'>
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+            <input type="hidden" name="_method" value="DELETE">
+            <input type='submit' value="x" class="btn btn-sm btn-danger">
+          </form>
+        </li>
+      <% end %>
+    </ul>
 
-<h1>Too Doo</h1>
-
-<ul>
-  <% @tasks.each do |t| %>
-    <li>
-      <!-- <a href="/tasks/2">Eat Lunch</a> -->
-      <%= link_to t.name, show_a_task_path(t.id) %>
-      <form action="/tasks/<%= t.id %>" method="POST">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-        <input type="hidden" name="_method" value="PATCH">
-        <input type="text" name="task_name" value="<%= t.name %>">
-        <input type='submit' value="Update">
-      </form>
-      <form action="/tasks/<%= t.id %>" method="POST">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-        <input type="hidden" name="_method" value="DELETE">
-        <input type='submit' value="x">
-      </form>
-    </li>
-  <% end %>
-</ul>
-
-<% if @task %>
-  <ul>
-    <% @task.errors.each do |c, msg| %>
-      <li><%= c %> <%= msg %></li>
+    <% if @task %>
+      <ul>
+        <% @task.errors.each do |c, msg| %>
+          <li><%= c %> <%= msg %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-
-<h2>Sign Up</h2>
-<form action="/users" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <div>
-    <h4>Username</h4>
-    <input type='text' name="user[username]" />
   </div>
 
-  <div>
-    <h4>Password</h4>
-    <input type="password" name="user[password]">
+  <div class='col-lg-3 col-sm-6'>
+    <h2>Sign Up</h2>
+    <form action="/users" method="POST" class="well">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+      <div>
+        <h4>Username</h4>
+        <input type='text' name="user[username]" class='form-control'/>
+      </div>
+
+      <div>
+        <h4>Password</h4>
+        <input type="password" name="user[password]" class='form-control'>
+      </div>
+
+      <div>
+        <h4>Confirm your password</h4>
+        <input type="password" name="user[password_confirmation]" class='form-control'>
+      </div>
+
+      <input type='submit' class="btn btn-block btn-success" />
+    </form>
   </div>
 
-  <div>
-    <h4>Confirm your password</h4>
-    <input type="password" name="user[password_confirmation]">
+  <div class='col-lg-3 col-sm-6'>
+    <h2>Create a Task</h2>
+    <form action="/tasks" method="POST" class='well'>
+      <input type="hidden" name="_method" value="PATCH" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+      <div>
+        <h4>
+          <label for="name-input">Task</label>
+        </h4>
+        <input type="text" id="name-input" name="task[name]" class='form-control' />
+        <!-- <input type="text" id="name-input" name="task_name" /> -->
+      </div>
+      <div>
+        <input type="hidden" value="false" name="task[complete]"/>
+        <input type="checkbox" id="complete-checkbox" name="task[complete]" class=''/>
+        <label for="complete-checkbox">Complete?</label>
+      </div>
+      <input type="submit" />
+    </form>
   </div>
-
-  <input type='submit' />
-</form>
-
-<%= form_for User.last, url: "" do |f| %>
-<% end %>
-<h2>Create a Task</h2>
-<form action="/tasks" method="POST">
-  <input type="hidden" name="_method" value="PATCH" />
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <div>
-    <h4>
-      <label for="name-input">Task</label>
-    </h4>
-    <input type="text" id="name-input" name="task[name]" />
-    <!-- <input type="text" id="name-input" name="task_name" /> -->
-  </div>
-  <div>
-    <input type="hidden" value="false" name="task[complete]"/>
-    <input type="checkbox" id="complete-checkbox" name="task[complete]"/>
-    <label for="complete-checkbox">Complete?</label>
-  </div>
-  <input type="submit" />
-</form>
+</div>
