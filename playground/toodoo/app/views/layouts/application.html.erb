@@ -8,6 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+<% if flash.key?(:notice) %>
+  <div class='alert alert-info'>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class='container'>
   <%= yield %>
 </div>
