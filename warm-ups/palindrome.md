@@ -1,3 +1,3 @@
-# Anagrams
+# Palindrome
 
-Write a class which initializes with a `word` attribtute (string), create a method called `.anagram?` which should return `true` if the `word` is an anagram.
+Write a class which initializes with a `word` attribute (string), create a method called `.palindrome?` which should return `true` if the `word` is an palindrome.
