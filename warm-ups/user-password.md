@@ -2,7 +2,7 @@
 
 Create a `User` class (plain ruby, not rails) with the following:
 
-- `.new` should accept three values as seperate arguments **OR** as a hash of three key/values
+- `.new` should accept three values as separate arguments **OR** as a hash of three key/values
   - `username`
   - `password`
   - `password_confirmation`

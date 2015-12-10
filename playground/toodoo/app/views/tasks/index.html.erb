@@ -1,18 +1,3 @@
-<img src="http://placekitten.com/51/50" class='img-circle'>
-
-<% if @current_user %>
-  <small class='label label-success'>Hello, <%= @current_user.username %></small>
-  <%= link_to "Sign out", "/sign-out", class: "btn btn-danger btn-xs" %>
-<% else %>
-  <%= form_tag "/sign-in", class: "pull-right" do %>
-    Username
-    <%= text_field_tag :username %>
-    Password
-    <%= password_field_tag :password %>
-
-    <%= submit_tag "Sign in" %>
-  <% end %>
-<% end %>
 <div class='row'>
   <div class='col-lg-6'>
     <h1>Too Doo</h1>

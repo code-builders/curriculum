@@ -8,16 +8,16 @@ class SessionsController < ApplicationController
   end
 
   def sign_in
-    # find the user by username
-    # authenticate that users password matches
-      # if it's correct sign them in
-      # else they need to try again
-    @user = User.find_by(username: params[:username])
-    if @user && @user.authenticate(params[:password])
-      session[:u_id] = @user.id
-      redirect_to root_path, flash: {success: "You were signed in.", warning: "Your account was hacked"}
+    if @current_user
+      redirect_to root_path, notice: "Please sign out before signing in"
     else
-      redirect_to root_path, flash: {warning: "Wrong username/password. Try again."}
+      @user = User.find_by(username: params[:username])
+      if @user && @user.authenticate(params[:password])
+        session[:u_id] = @user.id
+        redirect_to root_path, flash: {success: "You were signed in.", warning: "Your account was hacked"}
+      else
+        redirect_to root_path, flash: {warning: "Wrong username/password. Try again."}
+      end
     end
 
   end
