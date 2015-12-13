@@ -15,10 +15,12 @@ Create a web based calculator which has the following:
   - When clicked focus is returned to the `x` field. (Lookup `.focus`)
 
 
-### Extended Requirement
+### Extended Requirements
 
 - Abstract the logic for the calculation into it's own function
 - Add Square `<option>`
 - Add Square Root `<option>`
 - Add a `±` button which inverts the current answer as well as the value in the `x` field
+- When an invalid number (such as a letter) is given, show an error message (styled in red) that their operation isn't possible.
+- Create a number pad or integer buttons, operators, and a `.` button to allow the user to click buttons to enter their numbers.
 - Use the `onkeyup` event listener to allow the user to put in the numbers and operator without needing to change between input fields (i.e. the `"x"` key selects the value `x` from the operators)
