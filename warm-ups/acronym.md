@@ -1,6 +1,6 @@
 # Acronym-er
 
-Create a `Acronym` class with a method to turn any word into a randomized acronym.
+Create a method or function to turn any word into a randomized acronym.
 
 - Create a method that takes a string argument
 - Find a random word that starts with each letter from the array of words below
