@@ -1,0 +1,35 @@
+/** { outline: 1px solid pink; }*/
+body {
+  margin: 0;
+}
+.block {
+  width: 100px;
+  height: 100px;
+  outline: 1px solid pink;
+  display: inline-block;
+  float: left;
+}
+
+.grid-wrap {
+  word-spacing: -1;
+  margin: 25px;
+  min-width: 1000px;
+}
+.row {
+  height: 100px;
+  clear: both;
+  margin: 0 auto;
+  max-width: 100%;
+  margin-top: -3px;
+  display: block;
+}
+
+.cell {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+.cell:nth-child(odd) {
+  background-color: rgba(220,220,220, 0.2);
+}
