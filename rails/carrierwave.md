@@ -9,7 +9,15 @@ S3 -- Simple Storage Service
 
 ---------
 
-Let's start with a new Rails app
+
+Let's start with installing the tool to manipulate images:
+
+
+```sh
+brew install imagemagick
+```
+
+Next make a new Rails app
 
 ```bash
 $ rails new band_practice -T -d postgresql
@@ -23,7 +31,7 @@ $ rake db:create db:migrate
 Fog is a gem that helps us work with *cloud services* like those from Amazon - EC2 or S3 - as well as cloud offerings from other companies (like Microsoft, Rackspace, Blue Box, etc).
 
 ```ruby
-gem 'carrierwave'
+gem "carrierwave", "~> 0.1.0"
 gem 'fog-aws'
 gem 'dotenv-rails'
 ```
@@ -32,13 +40,13 @@ gem 'dotenv-rails'
 Now you need a uploader. This is the file which has all the settings like which folder the image will be saved, setting the image quality, caching etc.
 
 ```bash
-$ rails g uploader image
+$ bundle exec rails g uploader ImageFile
 ```
 
-The generator creates a new directory called `uploaders` under the `app` directory and in it a file called `image_uploader.rb`. In this file are a number of comments explaining how to customize the uploader. For example there is code to change the upload location, perform processing on the image after uploading and to restrict the type of files that can be uploaded. You should take a look at these options on your own, but for demonstration purposes we're going to get rid of most of it in favor of this:
+The generator creates a new directory called `uploaders` under the `app` directory and in it a file called `image_file_uploader.rb`. In this file are a number of comments explaining how to customize the uploader. For example there is code to change the upload location, perform processing on the image after uploading and to restrict the type of files that can be uploaded. You should take a look at these options on your own, but for demonstration purposes we're going to get rid of most of it in favor of this:
 
 ```ruby
-class ImageUploader < CarrierWave::Uploader::Base
+class ImageFileUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   def store_dir
@@ -63,7 +71,7 @@ end
 Next we'll need to add the uploader to the `Band` model. We'll need a column in the bands table to store it in so we'll generate a migration to do add it.
 
 ```bash
- $ rails g migration add_image_to_bands image:string
+ $ rails g migration add_image_to_bands image_file:string
  $ rake db:migrate
 ```
 
@@ -71,7 +79,7 @@ Then, we *mount* the uploader on the `Band` model.
 
 ```ruby
 class Band < ActiveRecord::Base
-  mount_uploader :image, ImageUploader
+  mount_uploader :image_file, ImageFileUploader
 end
 ```
 
@@ -80,18 +88,18 @@ Add a `file_field` to the Band form.
 app/views/bands/_form.html.erb
 ```ruby
 <div class="field">
-  <%= f.label :image %><br>
-  <%= f.file_field :image %>
+  <%= f.label :image_file %><br>
+  <%= f.file_field :image_file %>
 </div>
 ```
 
 
-We add `:image` to the strong params for the controller.
+We add `:image_file` to the strong params for the controller.
 
 app/controllers/bands_controller.rb
 ```ruby
 def band_params
-  params.require(:band).permit(:name, :genre, :image)
+  params.require(:band).permit(:name, :genre, :image_file)
 end
 ```
 
@@ -100,7 +108,7 @@ Finally, we modify the scaffolded form and show pages to include a form element 
 apps/views/bands/show.html.erb
 ```ruby
 <p>
-  <%= image_tag @band.image_url.to_s %>
+  <%= image_tag @band.image_file.url %>
 </p>
 ```
 
@@ -109,7 +117,7 @@ Now we can upload images - yay! In your terminal, take a look at `public/uploads
 app/views/bands/show.html.erb
 ```ruby
 <p>
-  <%= image_tag @band.image_url(:thumb).to_s %>
+  <%= image_tag @band.image_file.url(:thumb) %>
 </p>
 ```
 
@@ -131,8 +139,6 @@ CarrierWave.configure do |config|
 end```
 
 We also need to fill out our `.env` file. We can get the secret information from the *Security Credentials* screen in the AWS dashboard
-
-
 
 ## Resources
 
