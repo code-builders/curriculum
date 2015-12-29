@@ -112,7 +112,7 @@ apps/views/bands/show.html.erb
 </p>
 ```
 
-Now we can upload images - yay! In your terminal, take a look at `public/uploads` - `mini_magick` and `carrierwave` made all those files for us! We have access to these different sizes by passing the symbol of the size (as defined in our uploader model) to `#image_url`
+Now we can upload images - yay! In your terminal, take a look at `public/uploads` - `mini_magick` and `carrierwave` made all those files for us! We have access to these different sizes by passing the symbol of the size (as defined in our uploader model) to `#image_file.url`
 
 app/views/bands/show.html.erb
 ```ruby
