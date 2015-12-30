@@ -4,8 +4,8 @@ CarrierWave is a gem that adds a fairly simple and flexible way to users to uplo
 
 ## How-to
 ### Make an S3 bucket
-S3 -- Simple Storage Service
-"buckets" are like folders
+
+S3 -- Simple Storage Service "buckets" are like folders
 
 ---------
 
@@ -14,6 +14,7 @@ Let's start with installing the tool to manipulate images:
 
 
 ```sh
+brew update
 brew install imagemagick
 ```
 
@@ -31,9 +32,10 @@ $ rake db:create db:migrate
 Fog is a gem that helps us work with *cloud services* like those from Amazon - EC2 or S3 - as well as cloud offerings from other companies (like Microsoft, Rackspace, Blue Box, etc).
 
 ```ruby
-gem "carrierwave", "~> 0.1.0"
-gem 'fog-aws'
+gem "carrierwave", "~> 0.10.0"
+gem 'fog'
 gem 'dotenv-rails'
+gem 'mini_magick'
 ```
 
 ### Add an Uploader
@@ -61,11 +63,11 @@ class ImageFileUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [256, 256]
   end
 
-  version :full do
-    process :resize_to_fit => [2048, 2048]
+  version :square do
+    process :resize_to_fill => [256, 256]
   end
-end
 
+end
 ```
 
 Next we'll need to add the uploader to the `Band` model. We'll need a column in the bands table to store it in so we'll generate a migration to do add it.
@@ -126,19 +128,36 @@ app/views/bands/show.html.erb
 
 This is cool, but we want to save to S3 instead of the local file system. This is pretty easy. First, we need to tell CarrierWave that we want to use S3. Make a new initializer, `config/initializers/carrierwave.rb`
 
+```sh
+touch config/initializers/carrierwave.rb
+```
+
 ```ruby
 CarrierWave.configure do |config|
-  config.fog_provider = 'fog/aws'                        
+  config.storage = :fog
   config.fog_credentials = {
     provider:              'AWS',     
     aws_access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
     aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
-    region:                'us-west-1'
+    region:                'us-west-2'
   }
   config.fog_directory  = ENV["AWS_BUCKET"]
-end```
+end
+```
 
 We also need to fill out our `.env` file. We can get the secret information from the *Security Credentials* screen in the AWS dashboard
+
+```
+touch .env
+atom .env
+```
+
+```
+AWS_ACCESS_KEY_ID: YOUR_ID_HERE
+AWS_SECRET_ACCESS_KEY: YOUR_KEY_HERE
+AWS_BUCKET: YOUR_BUCKET_HERE
+```
+
 
 ## Resources
 
