@@ -5,7 +5,9 @@ CarrierWave is a gem that adds a fairly simple and flexible way to users to uplo
 ## How-to
 ### Make an S3 bucket
 
-S3 -- Simple Storage Service "buckets" are like folders
+S3 -- Simple Storage Service "buckets" are like folders but on a remote file system. You can store files in these buckets to access using HTTP. This idea is basically Dropbox for developers.
+
+[Sign in / up to Amazon AWS](http://console.aws.amazon.com), then click on "S3" (It's like 5th from the top). Click "Create Bucket", give the bucket a unique name for this project, every project with image uploads will have it's own bucket. Select the region "Oregon" (the code name for this region is "us-west-2", we'll see that later). Click "Create".
 
 ---------
 
@@ -145,19 +147,47 @@ CarrierWave.configure do |config|
 end
 ```
 
-We also need to fill out our `.env` file. We can get the secret information from the *Security Credentials* screen in the AWS dashboard
+We also need to fill out our `.env` file. We can get the secret information from the **IAM** section in the AWS dashboard
+
+1. Go to AWS
+2. Select **IAM** from the **Services** menu.
+3. Click **Users** in the left column
+4. Click "Create New Users" at the top of the page
+5. Give a username for this specific application
+6. Click **Show User Security Credentials** *or* **Download Credentials** <small>(Note: You must store these credentials somewhere yourself, AWS will never allow you to see them agin.)</small>
+7. Click "Close".
+8. Next, click on the username that you just created from the table of users
+9. Under the **Permissions** tab, click **Attach Policy**
+10. In the **Filter** input, type **S3**
+11. Check the box for **AmazonS3FullAccess**
+12. Click **Attach Policy**
+
+Whew... Ok, next we'll put the security credentials into our application. We cannot commit these credentials into git, it's disastrous. To get around this issue we use a gem called `dotenv-rails`. It will allow us to read secret values from a file without commiting that file. The file will be called `.env` in the root of our rails app. Before we create that file let's make sure that it will never be commited by adding it to out `.gitignore`.
+
+```sh
+atom .gitignore
+```
+
+```sh
+# In .gitignore
+.env # Add this anywhere in the file
+```
+
+Next we'll create the file and add our secret keys to it.
 
 ```
 touch .env
 atom .env
 ```
 
-```
-AWS_ACCESS_KEY_ID: YOUR_ID_HERE
-AWS_SECRET_ACCESS_KEY: YOUR_KEY_HERE
-AWS_BUCKET: YOUR_BUCKET_HERE
+```sh
+# In .env
+AWS_ACCESS_KEY_ID: # YOUR_ID_HERE
+AWS_SECRET_ACCESS_KEY: # YOUR_KEY_HERE
+AWS_BUCKET: # YOUR_BUCKET_NAME_HERE
 ```
 
+And now if we try to upload, everything should work.
 
 ## Resources
 
