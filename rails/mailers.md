@@ -4,16 +4,29 @@ Mailers are another component of Rails, just like models or controllers. Mailers
 
     rails generate mailer ClubMailer
 
-The mailer generator creates a mailer file (app/mailers/club_mailer.rb) and a dir for the corresponding views to go into (app/views/club_mailer). The mailer file is a class that inherits from `ActionMailer::Base`, this class gives us the mail specific methods such as `mail`. Lets start by creating a method in `club_mailer.rb` to send out a congratulatory email inviting the user to come to the club (yes this tutorial changed from golf clubs to dance clubs).
+The mailer generator creates a mailer file (app/mailers/club_mailer.rb) and a dir for the corresponding views to go into (app/views/club_mailer). The mailer file is a class that inherits from `ApplicationMailer`, this class gives is very similar to the `ApplicationController` which all controller inherit from. Inside of the `ApplicationMailer` we can set default that apply to all out going email it also gives us methods such as `.mail`.
+
+Taking a quick peek inside of the `application_mailer.rb` we can see there are two defaults already set:
+
+```rb
+class ApplicationMailer < ActionMailer::Base
+  default from: "from@example.com"
+  layout 'mailer'
+end
+```
+
+The `from` determines what email address any out going email appears to be sent from. Then the `layout` method determines which layout file to use, similar to the `application.html.erb` there is a `mailer.html.erb` which encapsulates the body of all outgoing email.
+
+Lets start by creating a method in `club_mailer.rb` to send out a congratulatory email inviting the user to come to the club.
 
 ```ruby
-class ClubMailer < ActionMailer::Base
-  default from: "from@example.com"
+class ClubMailer < ApplicationMailer
 
   def join_us
     @club = Club.first
-    mail(to: "bookis.smuin+club@gmail.com", subject: "Come join #{@club.name}" for a dance party!)
+    mail(to: "bookis.worthy@gmail.com", subject: "Come join #{@club.name}" for a dance party!)
   end
+
 end
 ```
 
@@ -24,7 +37,7 @@ rails console
 club_mailer = ClubMailer.join_us
 # => ActionView::MissingTemplate: Missing template club_mailer/join_us
 ```
-We get an error asking for a template, so let's create one
+We get an error asking for a template, when an email is attempted to send it reads the body of the email from an HTML file of the same name as the mailer method, just like a controller method does. So let's create a template for this method:
 
 ```bash
 touch app/views/club_mailer/join_us.html.erb
@@ -33,16 +46,15 @@ club_mailer = ClubMailer.join_us
 # => #<Mail::Message:70293938654000, ...
 ```
 
-Great, so now it returns this `Mail::Message` object, this object has a method called `.deliver`, which will actually try to connect to a mail server and send the email.
+Great, so now it returns this `Mail::Message` object, this object has a method called `.deliver_now`, which will actually try to connect to a mail server and send the email.
 
 ```ruby
-club_mailer.deliver
+club_mailer.deliver_now
 #...
 # => Sent mail to bookis.smuin+club@gmail.com
 #...
 ```
-It looks like this email was successfully sent, but you'll never actually get it because it's not actually hooked up to a mail server. Let's hook one up. You can use pretty much any email server including your personal gmail account. For a production
-application you would want to use something better suited for large scale sending. Look into [Mandrill by Mailchimp](https://mandrillapp.com), which is a transactional email service meant for production.
+It looks like this email was successfully sent, but you'll never actually get it because it's not actually hooked up to a mail server. Let's hook one up. You can use pretty much any email server including your personal gmail account. For a production application you would want to use something better suited for large scale sending. Look into [Mandrill by Mailchimp](https://mandrillapp.com), which is a transactional email service meant for production.
 
 We'll use Gmail credentials to add some configuration to our `development.rb`, inside of the `configure` block:
 
@@ -53,10 +65,10 @@ config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'example.com',
-  user_name:            ENV["MAIL_USERNAME"], # your gmail login
-  password:             ENV["MAIL_PASSWORD"], # your gmail password
+  user_name:            ENV["MAIL_USERNAME"],
+  password:             ENV["MAIL_PASSWORD"],
   authentication:       'plain',
-  enable_starttls_auto: true  
+  enable_starttls_auto: true
 }
 ```
 
@@ -64,7 +76,7 @@ Now if we try the same mailer, we should receive an email:
 
 ```ruby
     club_mailer = ClubMailer.join_us
-    club_mailer.deliver
+    club_mailer.deliver_now
 ```
 Right now the club we're sending an email about is hardcoded in (`Club.first`),
 we can make a mailer method take any number of arguments, just like any other ruby
@@ -89,7 +101,7 @@ class PlayerClubsController < ApplicationController
   def create
     @club = Club.find(params[:club_id])
     PlayerClub.create(club_id: @club.id, player_id: current_user.id)
-    ClubMailer.join_us(@club.id).deliver
+    ClubMailer.join_us(@club.id).deliver_now
     redirect_to root_path
   end
 end
