@@ -19,6 +19,9 @@
         <td><%= link_to 'Show', band %></td>
         <td><%= link_to 'Edit', edit_band_path(band) %></td>
         <td><%= link_to 'Destroy', band, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user %>
+          <td><%= button_to "Subscibe", send_subscribe_path, method: :post%></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

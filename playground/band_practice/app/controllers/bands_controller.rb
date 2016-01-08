@@ -1,6 +1,10 @@
 class BandsController < ApplicationController
   before_action :set_band, only: [:show, :edit, :update, :destroy]
 
+  def send_subscribe
+    BandMailer.subscribe(current_user.id).deliver_now
+    redirect_to bands_path, notice: "You were subscribed!"
+  end
   # GET /bands
   # GET /bands.json
   def index

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "/bands/subscribe", to: "bands#send_subscribe", as: :send_subscribe
   root to: "bands#index"
   resources :bands, :users
   get "/sign-out", to: "users#sign_out", as: :sign_out
