@@ -1,5 +1,17 @@
-# ActiveRecord
+# README
 
+Start by cloning [this repo](https://github.com/code-builders/foog_blog)!
+
+Then run the following from the root of the app:
+
+```sh
+bundle install
+rake db:create db:migrate db:seed
+```
+
+Then enter `rails console` and try the following
+
+# ActiveRecord
 
 Queries for single instances
 -------
