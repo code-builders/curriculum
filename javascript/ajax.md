@@ -55,12 +55,13 @@ Let's look at the markup to help us determine how we might modify the appearance
 
 Next lets add some functionality change the element in the DOM:
 ```js
-jQuery(document).ready(function() {
+$(function() {
   $(".choose").click(function(e) {
     e.preventDefault();
     var div = $(this).parents(".club");
     div.addClass("chosen");
   });
+});
 ```
 
 The additional code will find the parent element with class `club` and then add a new class called `chosen` to that parent div element.
