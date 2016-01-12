@@ -78,6 +78,23 @@ $(function () {
     e.preventDefault();
     var div = $(this).parents(".club");
     var url = $(this).parents("form").attr("action");
+    $.post(url, {}, function() {
+      div.addClass("chosen");
+    });
+  });
+});
+```
+
+The `.post` method takes three arguments. The first parameter is the url we want to send a POST HTTP request to. The second is the body of the request, this is what will become `params` in rails. The third argument is a function we want to run after the request is complete when the response is sent back.
+
+There are several ways to send an AJAX request, you can use any method (GET, POST, PATCH, DELETE), the one above is specifically for POST, but there is a more generic jQuery method to send any type of request. This will do the same thing but allows for more options to be passed in:
+
+```js
+$(function () {
+  $("input").click(function (e) {
+    e.preventDefault();
+    var div = $(this).parents(".club");
+    var url = $(this).parents("form").attr("action");
     $.ajax(url, {
       type: "POST",
       success: function (data) {
