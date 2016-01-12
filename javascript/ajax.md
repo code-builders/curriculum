@@ -9,7 +9,7 @@ Ajax (Asynchronous JavaScript and XML), is a method of making HTTP requests from
 Next, lets warm up with just a little jQuery DOM manipulation, that will help us get a feel for what we want the functionality to be. We want to be able to delete clubs without refreshing the page.
 
 #### Setup
-- Clone [this repo](https://github.com/Ada-Developers-Academy/jquery-practice)
+- Clone [this repo](https://github.com/code-builders/clubs)
 - Get the app running with:
 ```bash
 bundle
@@ -31,7 +31,7 @@ We've added a class of `.choose` to the button so we can use this class as our j
 
 ```js
 # app/assets/javascript/clubs.js
-jQuery(document).ready(function() {
+$(function() {
   $(".choose").click(function(e) {
     e.preventDefault();
   });
