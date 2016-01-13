@@ -2,4 +2,10 @@
   width: 100px;
   height: 100px;
   background-color: red;
+  transition: background-color 500ms linear;
+}
+
+.change-color {
+  background-color: rgb(84, 165, 210);
+  transition: background-color 500ms linear;
 }
