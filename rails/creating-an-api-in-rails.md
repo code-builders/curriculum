@@ -10,7 +10,7 @@ So the plan is to TDD a Rails app to act as our api. So we'll need a fresh sandb
 
 ```bash
 cd ~/sandbox
-git clone https://github.com/Ada-Developers-Academy/ada-pets
+git clone https://github.com/code-builders/pets
 bundle
 rake db:migrate db:seed
 ```
@@ -121,7 +121,7 @@ What if we get params that don't match a pet? What do we do? How should our code
 ```ruby
 def show
   pet = Pet.find_by(id: params[:id])
-  
+
   if pet
     render json: pet.as_json(except: [:created_at, :updated_at]), status: :ok
   else
@@ -130,7 +130,7 @@ def show
 end
 ```
 
-## Activity: Adding Search with your Chair Pair
+## Activity
 1. Write at least one positive (search found pets) and one negative (search didn't find pets) test.
 1. Implement the search feature in the `Pet` model
 1. Create a route and controller action for searching for a pet by name
