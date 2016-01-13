@@ -18,3 +18,15 @@ hashed_email = Digest::MD5.hexdigest(email.downcase) # be sure to downcase, also
 
 image_url = "http://www.gravatar.com/avatar/#{hashed_email}.jpg"
 ```
+
+This would be a great method to put in a helper.
+
+```rb
+module ApplicationHelper
+  def gravatar_for(email)
+    hashed_email = Digest::MD5.hexdigest(email.downcase)
+
+    image_tag "http://www.gravatar.com/avatar/#{hashed_email}.jpg", alt: "Profile Photo"
+  end
+end
+```
