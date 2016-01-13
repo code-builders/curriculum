@@ -6,8 +6,6 @@ $(function() {
     $(".box").toggleClass("change-color");
   }
 
-  $(".box").click(function() {
-    animateBox()
-  });
+  $(".box").click(animateBox);
   animateBox()
 });
