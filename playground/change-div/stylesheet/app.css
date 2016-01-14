@@ -1,6 +1,6 @@
 .box {
   width: 100px;
-  height: 100px;
+  height: 10px;
   background-color: red;
   transition: background-color 500ms linear;
 }
