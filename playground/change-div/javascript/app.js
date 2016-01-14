@@ -1,11 +1,6 @@
 $(function() {
-  var speed = 500;
-  var animateBox = function() {
-    var size = ($(this).width() < 500) ? 500 : 100
-    $(".box").animate({width: size, height: size}, speed)
-    $(".box").toggleClass("change-color");
-  }
-
-  $(".box").click(animateBox);
-  animateBox()
+  $(".box-width").change(function() {
+    var width = $(".box-width").val();
+    $(".box").animate({width: width}, 200)
+  });
 });
