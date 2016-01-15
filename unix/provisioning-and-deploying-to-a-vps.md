@@ -101,7 +101,7 @@ we will only be using the free tier. After signing up go to the [AWS Console](ht
 - Step 7: Verify that your page includes these things.
 ![](ec2-confirm.png)
 **Click Launch**
-- Step 8: In the modale, select "Create a new pair", give the key a name ("ec2-ada"), then "Download Key Pair"
+- Step 8: In the modale, select "Create a new pair", give the key a name ("ec2-cb"), then "Download Key Pair"
 **Click Launch Instances**
 
 Click on the link to the instance, it looks something like "i-aef4705f".
@@ -117,10 +117,10 @@ SSH
 Next we're going to SSH into the instance we just created. Go to the terminal and type:
 
 ```bash
-mv ~/Downloads/ec2-ada.pem ~/.ssh/
-chmod 400 ~/.ssh/ec2-ada.pem
+mv ~/Downloads/ec2-cb.pem ~/.ssh/
+chmod 400 ~/.ssh/ec2-cb.pem
 
-ssh -i ~/.ssh/ec2-ada.pem ubuntu@54.152.39.2 # Copy the Elastic IP Address from EC2
+ssh -i ~/.ssh/ec2-cb.pem ubuntu@54.152.39.2 # Copy the Elastic IP Address from EC2
 # say 'yes' when it asks if you want to add to Known Hosts
 ```
 
@@ -292,7 +292,7 @@ Open `config/deploy.rb` and fix these settings:
 
 ```ruby
 set :application, 'waitlist'
-set :repo_url, 'git@github.com:Ada-Developers-Academy/ec2-demo.git'
+set :repo_url, 'git@github.com:code-builders/ec2-demo.git'
 set :use_sudo, false
 
 set :deploy_to, '/var/www/waitlist'
@@ -350,7 +350,7 @@ DEBUG [f96c1cb9] 	and the repository exists.
 or
 
 ```
-DEBUG [a69573ff] Command: ( GIT_ASKPASS=/bin/echo GIT_SSH=/tmp/waitlist/git-ssh.sh /usr/bin/env git ls-remote --heads git@github.com:Ada-Developers-Academy/ec2-demo.git )
+DEBUG [a69573ff] Command: ( GIT_ASKPASS=/bin/echo GIT_SSH=/tmp/waitlist/git-ssh.sh /usr/bin/env git ls-remote --heads git@github.com:code-builders/ec2-demo.git )
 cap aborted!
 SSHKit::Runner::ExecuteError: Exception while executing as ubuntu@54.152.39.2: git exit status: 127
 git stdout: Nothing written
