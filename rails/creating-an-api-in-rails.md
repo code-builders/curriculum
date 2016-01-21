@@ -10,8 +10,9 @@ We'll end by adding some tests to this application. So we'll need a fresh sandbo
 
 ```bash
 git clone https://github.com/code-builders/pets
+cd pets
 bundle
-rake db:migrate db:seed
+rake db:create db:migrate db:seed
 ```
 
 Let's take a moment and walk through what we've got.
