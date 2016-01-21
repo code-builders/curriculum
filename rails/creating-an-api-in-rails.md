@@ -6,22 +6,17 @@ Let's build a small Rails app that will act as an API for providing data about o
 - `/pets/:id` shows a pet with the provided id
 - `/pets/search?query=<the search term>` fuzzy searches pets by name, shows all matching pets
 
-So the plan is to TDD a Rails app to act as our api. So we'll need a fresh sandbox to play in, plus a boilerplate Rails/Rspec install. Because we're friends and I value your time, I made a repo for you to clone:
+We'll end by adding some tests to this application. So we'll need a fresh sandbox to play in, plus a boilerplate Rails/Rspec install. Start by cloning the following repo:
 
 ```bash
-cd ~/sandbox
 git clone https://github.com/code-builders/pets
 bundle
 rake db:migrate db:seed
 ```
 
-Let's take a moment and walk through what we've got. _[Minutes Pass]_
+Let's take a moment and walk through what we've got.
 
-Now let's run our specs and start fixing tests...
-- missing route
-- missing controller action
-
-The next error we get is where we diverge from our standard approach.  The error should be something like:
+If we try to load the home page we'll get an error like:
 
 ```bash
 Missing template pets/index, application/index...
@@ -33,11 +28,11 @@ Since we are building a JSON api, we don't want to render an html template (or r
 # pets_controller.rb
 def index
   @pets = Pet.all
-  render json: { ready_for_lunch: "yassss" }
+  render json: { foo: "bar" }
 end
 ```
 
-Notice that we didn't for realsies write and JSON. We provided a plain Ruby hash and let Rails do the conversion for us (with the `render json:` call. So to make progress on our tests, we could do something like:
+Here we don't actually write json. We provided a plain Ruby hash and let Rails do the conversion for us (with the `render json:` call. Rails can also automatically convert instances of models into JSON with all of the data from the instances:
 
 ```ruby
 # pets_controller.rb
@@ -50,19 +45,35 @@ end
 Now curl gives us output that looks like:
 
 ```json
-[{"id"=>1,
-  "name"=>"rosa",
-  "age"=>0,
-  "human"=>"jeremy",
-  "created_at"=>Fri, 14 Aug 2015 20:55:22 UTC +00:00,
-  "updated_at"=>Fri, 14 Aug 2015 20:56:26 UTC +00:00},
- {"id"=>2,
-  "name"=>"rosa",
-  "age"=>nil,
-  "human"=>"jeremy2",
-  "created_at"=>Fri, 14 Aug 2015 20:55:42 UTC +00:00,
-  "updated_at"=>Fri, 14 Aug 2015 20:55:42 UTC +00:00}]
-```
+[
+    {
+        "breed": "Domestic Long Hair",
+        "created_at": "2016-01-21T16:30:28.223Z",
+        "human": "Kelsi",
+        "id": 1,
+        "name": "Urchin Jr",
+        "species": "Cat",
+        "updated_at": "2016-01-21T16:30:28.223Z"
+    },
+    {
+        "breed": "Domestic Long Hair",
+        "created_at": "2016-01-21T16:30:28.235Z",
+        "human": "Mothra",
+        "id": 2,
+        "name": "Siberian Husky",
+        "species": "Cat",
+        "updated_at": "2016-01-21T16:30:28.235Z"
+    },
+    {
+        "breed": "Domestic Long Hair",
+        "created_at": "2016-01-21T16:30:28.238Z",
+        "human": "Mothra",
+        "id": 3,
+        "name": "Himalaya",
+        "species": "Cat",
+        "updated_at": "2016-01-21T16:30:28.238Z"
+    }
+]```
 
 ### as_json
 `ActiveRecord` provides a great method for presenting models as json objects. It's called, as you may have guessed, `as_json`. Let's give it a try:
@@ -76,6 +87,34 @@ class PetsController < ApplicationController
     render json: pets.as_json(except: [:created_at, :updated_at])
   end
 end
+```
+
+This simplifies our output a bit:
+
+```json
+[
+    {
+        "breed": "Domestic Long Hair",
+        "human": "Kelsi",
+        "id": 1,
+        "name": "Urchin Jr",
+        "species": "Cat"
+    },
+    {
+        "breed": "Domestic Long Hair",
+        "human": "Mothra",
+        "id": 2,
+        "name": "Siberian Husky",
+        "species": "Cat"
+    },
+    {
+        "breed": "Domestic Long Hair",
+        "human": "Mothra",
+        "id": 3,
+        "name": "Himalaya",
+        "species": "Cat"
+    }
+]
 ```
 
 ### Response Codes
@@ -116,7 +155,7 @@ end
 ```
 
 #### What if we can't find a pet?
-What if we get params that don't match a pet? What do we do? How should our code change? At the very least, we should make sure that we don't throw an error. Also, we should return a status code that indicates to the consumer (which is another service) that we couldn't find any content to match their request. Fortuantely, the `204` status code exists for exactly this reason. Let's change our `show` method to:
+What if we get params that don't match a pet? What do we do? How should our code change? At the very least, we should make sure that we don't throw an error. Also, we should return a status code that indicates to the consumer (which is another service) that we couldn't find any content to match their request. Fortunately, the `204` status code exists for exactly this reason. Let's change our `show` method to:
 
 ```ruby
 def show
