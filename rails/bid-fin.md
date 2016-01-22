@@ -46,6 +46,8 @@ Requirements
     1. An email is sent with a special link to reset my email address
     2. I click on the link from my email and land on a page to add a new email address
     3. When submitted my email address is updated in the db
+- Style
+- Deploy
 - Other
   - When a bid is placed, the old highest bidder (if one exists) should receive an email notifying them that they were outbid
   - List neighborhood data with a location from Zillow or Trulia.com
