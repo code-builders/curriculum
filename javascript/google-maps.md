@@ -8,7 +8,8 @@ Google maps is provided by a javascript library downloaded from Google. Before w
   - Give the project a name (i.e. `BidFin`)
   - Leave `Accept requests from these HTTP referers` blank
 1. Next we are going to add a `script` tag in our HTML to download the maps javascript library on each request.
-  - ```html
+
+```html
 /* application.html.erb */
 <script src="https://maps.googleapis.com/maps/api/js?key=<YOUR API KEY HERE>" type="text/javascript"></script>
 ```
@@ -67,6 +68,6 @@ $(function() {
       zoom: 8
     });
   });
-  
+
 });
 ```
