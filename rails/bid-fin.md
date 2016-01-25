@@ -51,3 +51,4 @@ Requirements
 - Other
   - When a bid is placed, the old highest bidder (if one exists) should receive an email notifying them that they were outbid
   - List neighborhood data with a location from Zillow or Trulia.com
+  - Add visual graph of bid history also showing Zestimate.
