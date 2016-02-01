@@ -36,3 +36,29 @@ while (i < 100) {
   i++;
 }
 ```
+
+.forEach
+--------
+
+`.forEach` in Javascript is closer to the ruby `.each` method, although it's relatively new to javascript, older browsers will not support it (i.e. IE 8 :( ), so be careful to not use it if you are supporting those browsers.
+
+
+```js
+[1,2,3,4].forEach(function(element, index, array) {
+  console.log(element);
+})
+```
+
+Similar to the `.forEach`, there is also a `.map` method in Javascript, which is identical to Rubys. But again, this is not available to older browsers.
+
+```js
+[1,2,3,4].map(function(element, index, array) {
+  return element * 2;
+})
+```
+
+Resources
+---------
+- [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [`.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- [`for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
