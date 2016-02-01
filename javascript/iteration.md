@@ -57,6 +57,8 @@ Similar to the `.forEach`, there is also a `.map` method in Javascript, which is
 })
 ```
 
+Note: These methods are also considerably slower than a plain `for` loop as well.
+
 Resources
 ---------
 - [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
