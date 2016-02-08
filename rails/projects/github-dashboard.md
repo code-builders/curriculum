@@ -17,8 +17,8 @@ Create an application which shows a dashboard for a users Github data.
     - Total # of Gists
     - Total # of public repositories
     - Total # of private repositories
-  - A Pie, Polar Area, or Radar Chart showing a comparison of the primary language used in my repositories.
-  - A Pie, Polar Area, or Radar Chart showing a comparison of my last 300 event types (i.e. Pushed 120 times, Pulled 90 times, Commented 25 times).
+  - Any type of chart ([Pie](http://www.highcharts.com/demo/pie-legend), [Polar Area](http://www.highcharts.com/demo/polar),[Spider Web](http://www.highcharts.com/demo/polar-spider)) showing a comparison of the primary language used in my repositories.
+  - Any type of chart showing a comparison of my last 300 event types (i.e. Pushed 120 times, Pulled 90 times, Commented 25 times).
   - A a list of my 10 most recent repositories
   - A list of my most recent Gists
 
