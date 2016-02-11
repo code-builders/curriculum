@@ -13,6 +13,6 @@ console.log(testFunc());
 ```
 Then in Terminal run `node calc.js`
 
-Extended Requirements
+Extended Requirementsh 
 ------
 Allow a list of numbers instead of just two integers to apply the methods to.
