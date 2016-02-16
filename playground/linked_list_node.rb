@@ -24,10 +24,10 @@ class LinkedList
 
   def insert_at(v, term)
     node = search(term)
+    return nil if node.nil?
     tmp_node = node.nxt
-    new_node = Node.new(v)
+    new_node = Node.new(v, tmp_node)
     node.nxt = new_node
-    new_node.nxt = tmp_node
   end
 
 end
