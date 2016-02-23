@@ -1,2 +1,1 @@
-puts "Blah"
-puts ENV.inspect
+puts "Hello from Cron"
