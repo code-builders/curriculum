@@ -1,6 +1,6 @@
-# Functions are objects
+# Functions are objects 2
 
-In this lecture we're going to look at some more advanced implications of functions being objects. But first a quick recap:
+In this lecture we're going to look at functions as objects (again!).
 
 A function can be assigned as a variable (and this is a commons way of defining a function):
 
@@ -98,4 +98,52 @@ function sleepFor( sleepDuration ){
 sleepFor(10000)
 ```
 
-This is considered a **blocking** function, meaning that it's slow and it blocks the browser from doing anything else. Most things in javascript that are going to be slow have been made into asyncronous functions, meaning they are **non-blocking**, they will run in the background, and when they are done, they will pass their result into a callback to get it execute.
+This is considered a **blocking** function, meaning that it's slow and it blocks the browser from doing anything else. Most things in javascript that are going to be slow have been made into asyncronous functions, meaning they are **non-blocking**, they will run in the background, and when they are done, they will pass their result into a callback to execute it.
+
+We see this in `$.ajax`, `setTimeout`, and tons of other places.
+
+
+## Functions as methods
+
+Since functions are objects and they can be assigned to a variable or used in an argument, they can also be the value of a `Array` or `Object`, but most commonly an `Object`.
+
+```js
+var person = {
+  yell: function(str) { return str.toUpperCase() + "!!!" },
+}
+
+person.yell("I'm excited")
+```
+
+And we an add other keys to this object:
+
+```js
+var person = {
+  name: "Al",
+  yell: function(str) { return str.toUpperCase() + "!!!" },
+  whisper: function(str) { return "shhh ..." + str.toLowerCase() + "..."},
+  greet: function() { return "Hello, I'm " + this.name}
+}
+```
+
+We've added a couple other functions and a non-function `name` attribute. In the `greet` function there is something else special going on, the keyword `this` (like `self` in ruby and python) is referring to the `Object` itself, so you can use one key within another.
+
+## Prototypal design
+
+In the above example we are starting to get into a OO (Object Oriented) type style, although javascript is not based on OO, we can implement an OO style objects:
+
+```js
+var Person = function(name) {
+  // this is the constructor
+  this.name = name;
+  return this;
+}
+// This is like a instance method
+Person.prototype.greet = function() { return "Hello, I'm " + this.name }
+
+var s = new Person("Sandy")
+var b = new Person("Bobby")
+
+s.greet()
+b.greet()
+```
