@@ -14,3 +14,22 @@ Make a `Chess::Board` class, an instance of this class should have the following
 board = Chess::Board.new
 board.square("a", 7) # => nil (for now everything will be nil)
 ```
+
+Day 2
+-------
+
+Make a `Chess::Pawn` class with the following:
+
+- `initialize(side)` - `new` takes one arguement which should be either `:dark` or `:light` as symbols.
+- `side` - attribute assigned from initialize
+- `starting_position?` attributes default to true
+- `can_move_to?(square)` a method which takes one argument, this method determines if the pawn can move to that square, here is the logic for moving:
+  - cannot move backwards
+  - if `starting_position?` is `false`
+    - can move +1 forward to a empty square
+    - diagonally +1 to an occupied square
+  - if `starting_position?` is `true`
+    - can move +2 forward to a empty square in addition to when `starting_position?` is `false`
+- `moved_to(square)` - called after a pawn as been moved - changes `starting_position?` to `false`
+
+There will be more to add to the `Pawn` class, and there may be some gaps in our logic until we pull all of the components together.
