@@ -33,3 +33,19 @@ Make a `Chess::Pawn` class with the following:
 - `moved_to(square)` - called after a pawn as been moved - changes `starting_position?` to `false`
 
 There will be more to add to the `Pawn` class, and there may be some gaps in our logic until we pull all of the components together.
+
+Day 3
+-----
+
+Create a `Chess::Square` class, instances of this class will replace the `nil` values in our board matrix. It will have the following:
+
+- `#occupant` - defaults to `nil`, but can be initialized with a value (like a `Chess::Pawn`)
+- `#row` - initialized as the row for this square `a-h`
+- `#column` - initialized as the column for this square `1-8`
+
+
+Modify the `Chess::Board` to initialize squares instead of nil with the correct `row` and `column`
+
+```rb
+Chess::Piece("a", 7, nil) # => <Chess::Piece#123 occupant=nil row="a" column=7>
+```
