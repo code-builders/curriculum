@@ -47,5 +47,14 @@ Create a `Chess::Square` class, instances of this class will replace the `nil` v
 Modify the `Chess::Board` to initialize squares instead of nil with the correct `row` and `column`
 
 ```rb
-Chess::Piece("a", 7, nil) # => <Chess::Piece#123 occupant=nil row="a" column=7>
+Chess::Square("a", 7, nil) # => <Chess::Piece#123 occupant=nil row="a" column=7>
 ```
+
+Day 4
+-----
+
+Tie the existing components together:
+
+- Make `Pawn#can_move_to?(square)` take a `Chess::Square` as an argument rather than a string.
+- Make the `Chess::Board` initialize with two rows of `Chess::Pawn` instances on rows 2 & 7.
+- Make the `Chess::Square` instances on the board have the correct row and column when initialized on the board
