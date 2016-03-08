@@ -58,3 +58,17 @@ Tie the existing components together:
 - Make `Pawn#can_move_to?(square)` take a `Chess::Square` as an argument rather than a string.
 - Make the `Chess::Board` initialize with two rows of `Chess::Pawn` instances on rows 2 & 7.
 - Make the `Chess::Square` instances on the board have the correct row and column when initialized on the board
+
+Day 5
+--------
+
+Create a `Chess::Game` class which is responsible for controlling the flow of the game, including starting the game, asking the user for moves, outputing other questions and information.
+
+The `Chess::Game` class has the following:
+
+- `#board` attribute assigned on initialize, a new instance of the `Chess::Board` class which will be used throughout the game
+- `#current_player` - attribute to keep track of the whos turn it is (for now `:light` or `:dark` but, we'll implement a `Chess::Player` class.
+- `#start` - Initiates the start of the game with some info, then asks for the first players move.
+- `#ask_for_move` - outputs a question asking for the move the current player wants to take, and wait for a command line instruction, executes the move on the `board` (need to implement `move` on the `board`)
+  - If the move cannot be completed, the user is given a message, and it stays the current users turn.
+  - If the move is completed, the `current_player` is switched
