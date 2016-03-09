@@ -72,3 +72,6 @@ The `Chess::Game` class has the following:
 - `#ask_for_move` - outputs a question asking for the move the current player wants to take, and wait for a command line instruction, executes the move on the `board` (need to implement `move` on the `board`)
   - If the move cannot be completed, the user is given a message, and it stays the current users turn.
   - If the move is completed, the `current_player` is switched
+
+Day 6
+-----

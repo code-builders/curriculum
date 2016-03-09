@@ -2,7 +2,7 @@ Log Parser
 ----------
 
 Build a class that can take the output of a Rails log produce analytics on the data.
-Use the sample file `sample.log` within this directory.
+Use the sample file [`sample.log`](sample.log) within this directory.
 
 Bronze
 ------
