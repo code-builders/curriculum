@@ -7,7 +7,7 @@ sample_array = ["Cat", "Dog", "Bird"]
 # In an array we get a value by index
 sample_array[1] # => "Dog"
 
-sample_hash = [inside_pet:  "Cat", outside_pet: "Dog", cage_pet: "Bird"]
+sample_hash = {inside_pet:  "Cat", outside_pet: "Dog", cage_pet: "Bird"}
 # In an array we get a value by key
 sample_hash[:outside_pet] # => "Dog"
 ```
