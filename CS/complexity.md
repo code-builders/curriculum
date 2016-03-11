@@ -1,6 +1,6 @@
 # Big O Notation
 
-Big O notation is a idea used to describe the efficiency (most people will say complexity (pessimists!)) of code (most people will say algorithm (nerds!)).
+Big O noYQVhffEoEYuMAxEiXD7NUCaooBEQAstation is a idea used to describe the efficiency (most people will say complexity (pessimists!)) of code (most people will say algorithm (nerds!)).
 
 We can measure complexity by counting the number of times any given line of code is run, we then look at the line that had to run the most time, that line will determine how we work out the complexity. For example, in the following example most lines only run one time, but one line runs 10 times, this line is the basis for complexity.
 

@@ -30,9 +30,7 @@ module Chess
     end
 
     def can_move_to?(from, to)
-      from_row = from[-1].to_i
-      to_row   = to[-1].to_i
-      return false if backward?(from_row, to_row)
+      return false if backward?(from.row, to.row)
       # TBD put in more logic here
       true
     end

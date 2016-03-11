@@ -1,3 +1,6 @@
+require_relative "square"
+require_relative "pawn"
+
 module Chess
   class Board
     LETTERS = {
@@ -13,20 +16,35 @@ module Chess
 
     attr_accessor :squares
     def initialize
-      @squares = Array.new(8, Array.new(8))
+      @squares = Array.new(8)
+      @squares[0] = generate_row(1)
+      @squares[2] = generate_row(3)
+      @squares[3] = generate_row(4)
+      @squares[4] = generate_row(5)
+      @squares[5] = generate_row(6)
+      @squares[7] = generate_row(8)
+
+      @squares[1] = generate_row(2, Chess::Pawn.new(:light))
+      @squares[6] = generate_row(7, Chess::Pawn.new(:dark))
+    end
+
+    def generate_row(n, occupant=nil)
+      ("a".."h").map do |l|
+        Chess::Square.new(l, n, occupant)
+      end
     end
 
     def square(x,y)
       x = x.downcase.to_sym
       missing_square! if !has_square?(x,y)
-      squares[row(x)][col(y)]
+      squares[row(y)][col(x)]
     end
 
-    def row(x)
+    def col(x)
       Board::LETTERS[x]
     end
 
-    def col(y)
+    def row(y)
       y - 1
     end
 

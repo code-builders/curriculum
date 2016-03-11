@@ -25,7 +25,12 @@
         </li>
       <% end %>
     </ul>
-
+    
+    <ul>
+      <% @motivations.each do |tweet| %>
+        <li><%= tweet.text %></li>
+      <% end %>
+    </ul>
     <% if @task %>
       <ul>
         <% @task.errors.each do |c, msg| %>

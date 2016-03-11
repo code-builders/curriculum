@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
 
-  
+
   def index
     @tasks = Task.all
+    @motivations = Motivation.new.tweets
   end
 
   def show
