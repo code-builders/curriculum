@@ -18,15 +18,13 @@ class NoteMaker
   end
 
   def note
-    new_note = ""
-    goal.chars.each do |l|
-      if letter_bank[l.downcase].to_i > 0
-        new_note << l
+    goal.chars.map do |l|
+      new_note << if letter_bank[l.downcase].to_i > 0
         letter_bank[l.downcase] -= 1
+        l
       else
-        new_note << " "
+        " "
       end
     end
-    new_note
   end
 end
