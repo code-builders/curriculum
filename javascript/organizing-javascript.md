@@ -1,5 +1,6 @@
-# Functions are Objects
+# Organizing javascript
 
+In this lecture we are going to write out the same logic in several approaches and talk about the difference along the way.
 
 ```js
 var basePrice = 1.00;
