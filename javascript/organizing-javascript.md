@@ -8,16 +8,16 @@ var weight = 1.2;
 var volume = 3000;
 
 var priceForWeight = function() {
-  (weight * volume) / 1000
+  return (weight * volume) / 1000
 }
 
 var shippingPrice = function() {
   return basePrice + priceForWeight();
 }
 ```
-Advantages:
+- Advantages:
   - Easy to write and understand
-Disadvantages:
+- Disadvantages:
   - Everything is a global variable
   - Variables are easily overwritten by accident
   - All variables can be changed maliciously
@@ -32,7 +32,7 @@ var calculator = {
   weight: 1.2,
   priceForWeight: function() {
     return (this.weight * this.volume) / 1000;
-  }
+  },
   shippingPrice: function() {
     return this.basePrice + this.priceForWeight();
   }
