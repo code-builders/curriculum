@@ -11,8 +11,9 @@ words = {
 }
 ```
 
-Then on that hash, we can 'search' for the word `'fox'` with `words["fox"]`, this would be an O(1) search because it doesn't actually need to search, it just looks for the index then returns the sentence, while `words["pineapple"]`, would return `nil`. The above example is on a single string, but we want our class to search an array of strings, and the search method should return an array of matches:
+Then on that hash, we can 'search' for the word `'fox'` with `words["fox"]`, this would be an O(1) search because it doesn't actually need to search by comparing words, it just looks for the index then returns the sentence, while `words["pineapple"]`, would return `nil`. 
 
+The above example is on a single string, but we want our class to search an array of strings, and the search method should return an array of matches:
 
 ```rb
 sentences = ["I'm a cat", "I'm a dog", "Fuzzy wuzzy was a bear", "The quick brown fox"]
