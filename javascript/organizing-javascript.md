@@ -38,10 +38,10 @@ var calculator = {
   }
 }
 ```
-Advantages:
+- Advantages:
   - Only one global variable `calculator`
   - All variables are encapsulated
-Disadvantages:
+- Disadvantages:
   - All attributes can be accessed (i.e. someone could change `basePrice` easily)
   - Inflexible Object syntax, spacing and organization are harder
 
@@ -63,10 +63,10 @@ calculator = function() {
 }();
 ```
 
-Advantages:
+- Advantages:
   - Only one global variable
   - Can make private attributes (i.e. `basePrice`)
-Disadvantages:
+- Disadvantages:
   - Inflexible Object syntax, spacing and organization are harder
   - Have to switch between using `this` and variables
 
@@ -91,12 +91,12 @@ calculator = function() {
 }();
 ```
 
-Advantages:
+- Advantages:
   - Only one global variable
   - Can make private attributes (i.e. `basePrice`)
   - Easier organization and grouping of code
   - No switching between `this` and variables
-Disadvantages:
+- Disadvantages:
   - Have to define getters and setters for variables which are used within private functions
 
 ```js
@@ -106,28 +106,29 @@ Disadvantages:
   exports.volume =  3000;
 
   exports.priceForWeight = function() {
-    return (exports.weight * exports.volume) / 1000;
+    return (this.weight * this.volume) / 1000;
   };
 
   exports.shippingPrice = function() {
-    return basePrice + exports.priceForWeight();
+    return basePrice + this.priceForWeight();
   };
   return exports;
 }(calculator = {}));
 ```
-Advantages:
+
+- Advantages:
   - Only one global variable
   - Can make private attributes (i.e. `basePrice`)
   - Easier organization and grouping of code
   - Private functions can refer to variables
-Disadvantages:
+- Disadvantages:
   - Have to switch between `exports` and variables
 
 ## Prototype Pattern
 
 ```js
 var Calculator = function () {
-  var basePrice = 1.00;
+  this.basePrice = 1.00;
   this.weight = 1.2;
   this.volume = 3000;
 }
@@ -137,18 +138,18 @@ Calculator.prototype.priceForWeight = function() {
 };
 
 Calculator.prototype.shippingPrice = function() {
-  return basePrice + this.priceForWeight();
+  return this.basePrice + this.priceForWeight();
 };
 ```
 
 Advantages:
   - Only one global variable
-  - Can make private attributes (i.e. `basePrice`)
   - Easier organization and grouping of code
-  - Private functions can refer to variables
   - Object oriented approach including inheritance
 Disadvantages:
-  - Have to switch between `this` and variables
+  - Can't make private variables
+
+## Prototype pattern with module encapsulation
 
 ```js
 var Calculator = function () {
@@ -157,14 +158,14 @@ var Calculator = function () {
 }
 
 Calculator.prototype = function() {
-  var basePrice = 1.2;
+  var basePrice = 1;
 
   var priceForWeight = function() {
-    return (this.weight * this.volume) / 1000;
+    return (this.weight * this.volume) / 1000
   };
 
   var shippingPrice = function() {
-    return basePrice + priceForWeight();
+    return basePrice + this.priceForWeight();
   };
 
   return {priceForWeight: priceForWeight, shippingPrice: shippingPrice};
