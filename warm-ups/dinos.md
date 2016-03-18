@@ -1,14 +1,16 @@
 # Dinos
 
-Clone the [Dinos Active Record](https://github.com/Ada-Developers-Academy/dinos-active-record) Rails app
+Clone the [Dinos Active Record](https://github.com/code-builders/dinos) Rails app
 Set up the project by the following:
 
 ```bash
-cd dinos-active-record
+cd dinos
 bundle install
 rake db:create db:migrate db:seed
 # creates, migrates, and adds data to the database.
 ```
+
+In this app there are two models `Dino` and `Egg`. A `Dino` has many eggs, and an `Egg` belongs to a `Dino`. The `db:seed` command entered a bunch of data into both of these tables using the `db/seeds.rb` file.
 
 Go into the `rails console` and query the newly created data using ActiveRecord
 to find out the following
