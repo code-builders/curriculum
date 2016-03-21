@@ -27,7 +27,7 @@ Silver
 
 - How many Dinos have a genus that ends in "saurus"?
 - How many Dinos have a length of less than 20 or a height greater than 20?
-- How many eggs have the color "green" in the name?
+- How many eggs have the shell color of "green"?
 
 Gold
 -----
