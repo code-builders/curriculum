@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+
+.email-list {
+  float: left;
+  width: 250px;
+  margin: 5px;
+}
+
+.email-list-item {
+  border: 1px solid black;
+  border-bottom: none;
+  padding: 5px;
+}
+
+.email-list-item:last-child {
+  border-bottom: 1px solid black;
+}

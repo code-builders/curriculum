@@ -2,19 +2,66 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 
-var emails = [{ subject: "Hello there!", body: "Lorem ipsum", from: "Tammy", to: "Bookis" }, { subject: "Oh hi!", body: "Lorem ipsum", from: "Chris", to: "Bookis" }, { subject: "Howdy", body: "Lorem ipsum", from: "LeShoya", to: "Bookis" }, { subject: "Hey!", body: "Lorem ipsum", from: "Evelyn", to: "Bookis" }, { subject: "Hello there!", body: "Lorem ipsum", from: "Danial", to: "Bookis" }];
+var emails = [{ subject: "Hello there!", body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", from: "Tammy", to: "Bookis" }, { subject: "Oh hi!", body: "Lorem ipsum", from: "Chris", to: "Bookis" }, { subject: "Howdy", body: "Lorem ipsum", from: "LeShoya", to: "Bookis" }, { subject: "Hey!", body: "Lorem ipsum", from: "Evelyn", to: "Bookis" }, { subject: "Hello there!", body: "Lorem ipsum", from: "Danial", to: "Bookis" }];
 
 var Email = React.createClass({
   displayName: "Email",
 
+  setCurrentEmail: function (email) {
+    this.setState({ currentEmail: email });
+  },
   getInitialState: function () {
-    return { emails: emails };
+    return { emails: emails, currentEmail: null };
   },
   render: function () {
     return React.createElement(
       "div",
       null,
-      React.createElement(EmailList, { emails: this.state.emails })
+      React.createElement(EmailList, { handleClick: this.setCurrentEmail, emails: this.state.emails }),
+      React.createElement(EmailPreview, { email: this.state.currentEmail })
+    );
+  }
+});
+
+var EmailPreview = React.createClass({
+  displayName: "EmailPreview",
+
+  render: function () {
+    var body;
+    if (this.props.email) {
+      body = React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "h1",
+          null,
+          this.props.email.subject
+        ),
+        React.createElement(
+          "p",
+          null,
+          this.props.email.body
+        ),
+        React.createElement(
+          "small",
+          null,
+          "From: ",
+          this.props.email.from,
+          " To: ",
+          this.props.email.to
+        )
+      );
+    } else {
+      body = React.createElement(
+        "h1",
+        null,
+        "..."
+      );
+    }
+    return React.createElement(
+      "div",
+      { className: "email-preview" },
+      body
     );
   }
 });
@@ -26,7 +73,7 @@ var EmailList = React.createClass({
     var emailDivs = [];
 
     for (var i = 0; i < this.props.emails.length; i++) {
-      emailDivs.push(React.createElement(EmailListItem, { key: i, email: this.props.emails[i] }));
+      emailDivs.push(React.createElement(EmailListItem, { handleClick: this.props.handleClick, key: i, email: this.props.emails[i] }));
     }
 
     return React.createElement(
@@ -40,10 +87,13 @@ var EmailList = React.createClass({
 var EmailListItem = React.createClass({
   displayName: "EmailListItem",
 
+  showEmail: function () {
+    this.props.handleClick(this.props.email);
+  },
   render: function () {
     return React.createElement(
       "div",
-      { className: "email-list-item" },
+      { onClick: this.showEmail, className: "email-list-item" },
       React.createElement(
         "h2",
         null,
